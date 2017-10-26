@@ -25,7 +25,7 @@
     "build": "babel src -d lib",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "prepublish": "npm run clean && npm run build",
+    "prepare": "npm run clean && npm run build",
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",
     "lint:js": "yarn run lint:eslint -- . ",
