@@ -16,15 +16,34 @@ export default (path, state) => {
   ) {
     const { tag: callee, quasi: { quasis, expressions } } = path.node;
 
-    const values = quasis.map(quasi =>
-      t.templateElement(
+    let values;
+    if (quasis.length === 1) {
+      values = [
+        t.templateElement(
+          {
+            cooked: `\n${cssNamespace} {${quasis[0].value.cooked}}\n`,
+            raw: `\n${cssNamespace} {${quasis[0].value.raw}}\n`
+          },
+          quasis[0].tail
+        )
+      ];
+    } else {
+      const first = t.templateElement(
         {
-          cooked: `\n${cssNamespace} {${quasi.value.cooked}}\n`,
-          raw: `\n${cssNamespace} {${quasi.value.cooked}}\n`
+          cooked: `\n${cssNamespace} {${quasis[0].value.cooked}`,
+          raw: `\n${cssNamespace} {${quasis[0].value.raw}`
         },
-        quasi.tail
-      )
-    );
+        quasis[0].tail
+      );
+      const last = t.templateElement(
+        {
+          cooked: `${quasis[quasis.length - 1].value.cooked}}\n`,
+          raw: `${quasis[quasis.length - 1].value.raw}}\n`
+        },
+        quasis[quasis.length - 1].tail
+      );
+      values = [first, ...quasis.slice(1, quasis.length - 1), last];
+    }
 
     path.replaceWith(
       t.taggedTemplateExpression(callee, t.templateLiteral(values, expressions))

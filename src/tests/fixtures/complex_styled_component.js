@@ -1,14 +1,12 @@
 const styled = { div() {} };
 
 const MyStyledComponent = styled.div`
-  background-color: yellow;
-  color: {props => props.theme.color};
-  
-  .foo {
-    border: 1px solid black;
+  background-color: ${props => (props.isDark ? 'red' : 'yellow')};
+  color: ${props => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
 
-    & .bar {
-      background-color: blue;
-    }
+  & {
+    border: 1px solid black;
   }
 `;
