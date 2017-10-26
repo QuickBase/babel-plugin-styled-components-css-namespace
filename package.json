@@ -1,0 +1,128 @@
+{
+  "name": "babel-plugin-styled-components-css-namespace",
+  "version": "0.0.1",
+  "description": "A babel plugin to add css namespaces to all styled components.",
+  "keywords": [
+    "styled-components",
+    "css-in-js",
+    "babel-plugin",
+    "css-namespaces",
+    "css-specificity"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "author": "Quick Base",
+  "contributors": [
+    "Gen Edwards <gedwards@quickbase.com>",
+    "Michael Harris <mharris@quickbse.com>",
+    "Nick Vanselow <nvanselow@quickbase.com>"
+  ],
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "babel src -d lib",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "prepublish": "npm run clean && npm run build",
+    "lint": "yarn run lint:js",
+    "lint:js": "yarn run lint:eslint -- . ",
+    "lint:staged": "lint-staged",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --write",
+      "lint:eslint",
+      "git add"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": 4
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "prettier"
+    ],
+    "env": {
+      "browser": false,
+      "node": true,
+      "jest": true,
+      "es6": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true
+        }
+      ],
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ],
+      "comma-dangle": [
+        2,
+        "never"
+      ],
+      "indent": [
+        0,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "max-len": 0,
+      "newline-per-chained-call": 0,
+      "no-confusing-arrow": 0,
+      "no-console": 1,
+      "no-use-before-define": 0,
+      "prefer-template": 2,
+      "class-methods-use-this": 0,
+      "require-yield": 0,
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "1.2.1",
+    "babel-types": "6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.0.1",
+    "babel-preset-env": "1.6.1",
+    "eslint": "4.9.0",
+    "eslint-config-prettier": "2.6.0",
+    "eslint-plugin-prettier": "2.3.1",
+    "jest": "21.2.1",
+    "lint-staged": "4.3.0",
+    "prettier": "^1.7.4",
+    "rimraf": "2.6.2"
+  }
+}
