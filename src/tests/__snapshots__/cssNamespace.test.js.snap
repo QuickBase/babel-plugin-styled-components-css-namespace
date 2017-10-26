@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Adds namespace to complex styled-component 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: yellow;
+  color: {props => props.theme.color};
+  
+  .foo {
+    border: 1px solid black;
+
+    & .bar {
+      background-color: blue;
+    }
+  }
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div([\\"\\\\n&& {\\\\n  background-color: yellow;\\\\n  color: {props => props.theme.color};\\\\n  \\\\n  .foo {\\\\n    border: 1px solid black;\\\\n\\\\n    & .bar {\\\\n      background-color: blue;\\\\n    }\\\\n  }\\\\n}\\\\n\\"]);
+"
+`;
+
+exports[`Adds namespace to simple styled-component 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: 'yellow';
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div([\\"\\\\n&& {\\\\n  background-color: 'yellow';\\\\n}\\\\n\\"]);
+"
+`;
+
+exports[`Uses a namespace specified in the options 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: yellow;
+  color: {props => props.theme.color};
+  
+  .foo {
+    border: 1px solid black;
+
+    & .bar {
+      background-color: blue;
+    }
+  }
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div([\\"\\\\n.moreSpecific & {\\\\n  background-color: yellow;\\\\n  color: {props => props.theme.color};\\\\n  \\\\n  .foo {\\\\n    border: 1px solid black;\\\\n\\\\n    & .bar {\\\\n      background-color: blue;\\\\n    }\\\\n  }\\\\n}\\\\n\\"]);
+"
+`;

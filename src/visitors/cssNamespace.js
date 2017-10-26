@@ -7,15 +7,15 @@ import {
 export default (path, state) => {
   if (isStyled(path.node.tag, state) || isHelper(path.node.tag, state)) {
     const { tag: callee, quasi: { quasis, expressions } } = path.node;
+    const cssNamespace = state.opts.cssNamespace
+      ? `.${state.opts.cssNamespace} &`
+      : '&&';
 
-    const originalQuasis = quasis.map(quasi =>
-      t.stringLiteral(quasi.value.cooked)
+    const values = t.arrayExpression(
+      quasis.map(quasi =>
+        t.stringLiteral(`\n${cssNamespace} {${quasi.value.cooked}}\n`)
+      )
     );
-    const values = t.arrayExpression([
-      t.stringLiteral('&& {'),
-      ...originalQuasis,
-      t.stringLiteral('}')
-    ]);
 
     path.replaceWith(t.callExpression(callee, [values, ...expressions]));
   }
