@@ -49,10 +49,7 @@
   },
   "jest": {
     "collectCoverageFrom": ["src/**/*.js"],
-    "testMatch": [
-      "<rootDir>/src/**/tests/**/*.js",
-      "<rootDir>/src/**/?(*.)(spec|test).js"
-    ],
+    "testMatch": ["<rootDir>/src/**/?(*.)(spec|test).js"],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -120,6 +117,7 @@
     "babel-cli": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-jest": "^21.2.0",
+    "babel-plugin-tester": "4.0.0",
     "babel-preset-env": "1.6.1",
     "eslint": "4.9.0",
     "eslint-config-prettier": "2.6.0",
@@ -128,6 +126,7 @@
     "jest": "21.2.1",
     "lint-staged": "4.3.0",
     "prettier": "1.7.4",
-    "rimraf": "2.6.2"
+    "rimraf": "2.6.2",
+    "styled-components": "2.2.2"
   }
 }
