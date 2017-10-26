@@ -21,7 +21,20 @@ const MyStyledComponent = styled.div\`
 
 const styled = { div() {} };
 
-const MyStyledComponent = styled.div([\\"\\\\n&& {\\\\n  background-color: yellow;\\\\n  color: {props => props.theme.color};\\\\n  \\\\n  .foo {\\\\n    border: 1px solid black;\\\\n\\\\n    & .bar {\\\\n      background-color: blue;\\\\n    }\\\\n  }\\\\n}\\\\n\\"]);
+const MyStyledComponent = styled.div\`
+&& {
+  background-color: yellow;
+  color: {props => props.theme.color};
+  
+  .foo {
+    border: 1px solid black;
+
+    & .bar {
+      background-color: blue;
+    }
+  }
+}
+\`;
 "
 `;
 
@@ -37,7 +50,11 @@ const MyStyledComponent = styled.div\`
 
 const styled = { div() {} };
 
-const MyStyledComponent = styled.div([\\"\\\\n&& {\\\\n  background-color: 'yellow';\\\\n}\\\\n\\"]);
+const MyStyledComponent = styled.div\`
+&& {
+  background-color: 'yellow';
+}
+\`;
 "
 `;
 
@@ -62,6 +79,19 @@ const MyStyledComponent = styled.div\`
 
 const styled = { div() {} };
 
-const MyStyledComponent = styled.div([\\"\\\\n.moreSpecific & {\\\\n  background-color: yellow;\\\\n  color: {props => props.theme.color};\\\\n  \\\\n  .foo {\\\\n    border: 1px solid black;\\\\n\\\\n    & .bar {\\\\n      background-color: blue;\\\\n    }\\\\n  }\\\\n}\\\\n\\"]);
+const MyStyledComponent = styled.div\`
+.moreSpecific & {
+  background-color: yellow;
+  color: {props => props.theme.color};
+  
+  .foo {
+    border: 1px solid black;
+
+    & .bar {
+      background-color: blue;
+    }
+  }
+}
+\`;
 "
 `;
