@@ -33,7 +33,11 @@
       "eslint --ignore-path .gitignore --ignore-pattern internals/scripts"
   },
   "lint-staged": {
-    "*.js": ["prettier --single-quote --write", "lint:eslint", "git add"]
+    "*.js": [
+      "prettier --single-quote --write --ignore-path .prettierignore",
+      "lint:eslint",
+      "git add"
+    ]
   },
   "babel": {
     "presets": [
