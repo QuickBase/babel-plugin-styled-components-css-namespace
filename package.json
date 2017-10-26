@@ -1,7 +1,8 @@
 {
   "name": "babel-plugin-styled-components-css-namespace",
   "version": "0.0.1",
-  "description": "A babel plugin to add css namespaces to all styled components.",
+  "description":
+    "A babel plugin to add css namespaces to all styled components.",
   "keywords": [
     "styled-components",
     "css-in-js",
@@ -10,9 +11,7 @@
     "css-specificity"
   ],
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "author": "Quick Base",
   "contributors": [
     "Gen Edwards <gedwards@quickbase.com>",
@@ -30,14 +29,11 @@
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",
     "lint:js": "yarn run lint:eslint -- . ",
-    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts"
+    "lint:eslint":
+      "eslint --ignore-path .gitignore --ignore-pattern internals/scripts"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --single-quote --write",
-      "lint:eslint",
-      "git add"
-    ]
+    "*.js": ["prettier --single-quote --write", "lint:eslint", "git add"]
   },
   "babel": {
     "presets": [
@@ -51,20 +47,33 @@
       ]
     ]
   },
+  "jest": {
+    "collectCoverageFrom": ["src/**/*.js"],
+    "testMatch": [
+      "<rootDir>/src/**/tests/**/*.js",
+      "<rootDir>/src/**/?(*.)(spec|test).js"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": ["web.js", "js", "json", "web.jsx", "jsx", "node"]
+  },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": [
-      "prettier"
-    ],
+    "extends": ["prettier"],
     "env": {
       "browser": false,
       "node": true,
       "jest": true,
       "es6": true
     },
-    "plugins": [
-      "prettier"
-    ],
+    "plugins": ["prettier"],
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module"
@@ -76,14 +85,8 @@
           "singleQuote": true
         }
       ],
-      "arrow-body-style": [
-        2,
-        "as-needed"
-      ],
-      "comma-dangle": [
-        2,
-        "never"
-      ],
+      "arrow-body-style": [2, "as-needed"],
+      "comma-dangle": [2, "never"],
       "indent": [
         0,
         2,
@@ -116,6 +119,7 @@
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-eslint": "8.0.1",
+    "babel-jest": "^21.2.0",
     "babel-preset-env": "1.6.1",
     "eslint": "4.9.0",
     "eslint-config-prettier": "2.6.0",
