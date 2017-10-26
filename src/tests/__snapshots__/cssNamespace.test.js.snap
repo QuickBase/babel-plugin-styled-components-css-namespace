@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Adds namespace to complex styled-component 1`] = `
+exports[`adds namespace to complex styled-component 1`] = `
 "
 const styled = { div() {} };
 
@@ -34,7 +34,7 @@ const MyStyledComponent = styled.div\`
 "
 `;
 
-exports[`Adds namespace to simple styled-component 1`] = `
+exports[`adds namespace to simple styled-component 1`] = `
 "
 const styled = { div() {} };
 
@@ -54,7 +54,7 @@ const MyStyledComponent = styled.div\`
 "
 `;
 
-exports[`Uses a namespace specified in the options 1`] = `
+exports[`uses a namespace specified in the options 1`] = `
 "
 const styled = { div() {} };
 
@@ -75,6 +75,40 @@ const styled = { div() {} };
 
 const MyStyledComponent = styled.div\`
 .moreSpecific & {
+  background-color: \${props => props.isDark ? 'red' : 'yellow'};
+  color: \${props => props.isDark ? 'white' : 'navy'};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+}
+\`;
+"
+`;
+
+exports[`uses an array of namespaces specified in the options 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
+  color: \${props => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+.specific .verySpecific .extraSpecific & {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;

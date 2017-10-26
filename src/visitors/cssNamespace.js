@@ -4,10 +4,21 @@ import {
   isHelper
 } from 'babel-plugin-styled-components/lib/utils/detectors';
 
+const getCssNamespace = state => {
+  const { cssNamespace } = state.opts;
+  if (!cssNamespace) {
+    return '&&';
+  }
+
+  if (Array.isArray(cssNamespace)) {
+    return `.${cssNamespace.join(' .')} &`;
+  }
+
+  return `.${cssNamespace} &`;
+};
+
 export default (path, state) => {
-  const cssNamespace = state.opts.cssNamespace
-    ? `.${state.opts.cssNamespace} &`
-    : '&&';
+  const cssNamespace = getCssNamespace(state);
 
   if (
     (isStyled(path.node.tag, state) || isHelper(path.node.tag, state)) &&
