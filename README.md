@@ -81,7 +81,7 @@ However, if you are trying to gradually introduce [styled-components](https://gi
 
 This plugin will automatically add additional css namespaces or duplicated classes to the selectors produced by styled components effectively creating a wall between the legacy css code and your new shiny styled components.
 
-![monty-python-castle](http://gph.is/10jd3gV)
+![monty-python-castle](https://media.giphy.com/media/12TIvbgMTrGhhu/giphy.gif)
 
 ## Developing
 
