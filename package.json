@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-styled-components-css-namespace",
+  "name": "@quickbaseoss/babel-plugin-styled-components-css-namespace",
   "version": "0.0.1",
   "description":
     "A babel plugin to add css namespaces to all styled components.",
@@ -10,6 +10,9 @@
     "css-namespaces",
     "css-specificity"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "files": ["lib"],
   "author": "Quick Base",
