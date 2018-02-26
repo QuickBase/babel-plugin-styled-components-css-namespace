@@ -12,4 +12,3 @@ deploy:
   on:
     tags: true
     repo: QuickBase/babel-plugin-styled-components-css-namespace
-    branch: master
