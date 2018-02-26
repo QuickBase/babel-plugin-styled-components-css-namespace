@@ -1,0 +1,13 @@
+language: node_js
+cache:
+  directories:
+  - node_modules
+before_deploy: npm run prepare
+deploy:
+  provider: npm
+  email: quickbase-oss@quickbase.com
+  api_key:
+    secure: lkn4ofJsa5yaprVu9SEbKl3qHM2AwAU4T0IpMLupWzIBmgG3fByleorycyL+njC0AeINtXayoOv49H1CrkyhZZwVvuWbehddi/dtm6g1MbcoBc9VXqomWWNauQwNQdp0xbkvq8OApaMyxaIkxewSV2Gc03Y8i4L/D2Ud9ZyPwVGA6s45MxK67dn9CUguayxreOHcUScURDz8vRUG10XGLnb8dOsHdMrAZxLzX1q/kDjcF3p+r1bbgikuBD+E30GNap4wOKeTOxkRg0GuAW+YT30QkZ/LRJW+YPVdP504+IewMGSUlb34cffqG0cJ6W8PQcR8BWLCqjcPUPd+zwjz7aT4P2PdDtApyUD0COvqMalrpGR6paZKb1sDuHpGovg+RBeKbWVy60IdMmSsZB59IJfJglyklUErKUfuTNvTFRleWtWMYIDKWg/oS2BfeTEfjTwX73PV+7ljZHfV516Rllh3vsJVNx0J0+7du1aBExn1y2FRYh9SflDRfqDVdZ7aDmz+XSdK8kjWd4KeLDUf4Sw/ET10nYiql3vIYc7yv9OCeE6xld/pi3iddgfX9XIyeWR1E5ePyltdGWLBxmWib2JeG5Dxsin6r0Cvi6ESFpkgO3oXVcMNkiGmEf/slhFbROdlsB5pdIaaFo1dedXmQ/tIrB1odqVuSnVsHAC8tUs=
+  on:
+    tags: true
+    repo: QuickBase/babel-plugin-styled-components-css-namespace
