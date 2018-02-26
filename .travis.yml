@@ -8,6 +8,7 @@ deploy:
   email: quickbase-oss@quickbase.com
   api_key:
     secure: G8GDFfCmJK/8gxgqVMP7+Yxh0xv/ILhL1Dnc1HQuallU3cEaqeZTihKra4zz/HaK91Gw97t+rcbur9UBphxPrKC5wzVHKtMANjiYcJKu1EMnpt6mM6jdQf8M8zD/GvQ4MtV5jFK9shdwux9CtcQc6y/NVbkbMXyGG9cavP0JdhGJEQkmkB3I0ZWC0C3Orj19MdS/G14a9zPYDwm4oItvmCIR2RU5MtsQ7s3aMBU2FkHeDeI4U2+hewEGNNyraCZTao4bG1D/Fk0OdnE52kLeLCiVix1iONVN5x/uzabFS/0pC4jWuJz1LizM1Ed7iciKpqsvtTttLvT3XSd67hKrytsb485Lexrw07zdEQW231XNqOcyrATQlhftjxs3Z0Y9/nLhjl/Q8xGye6vTFBODTtHzl1MaCJEwuMuDB1PZAl7GKWUuecYIc+KUh2jYtwzTUfsObhkZ/Z7KFliR2b08zklI1ifl3OypnEp841YG7Z6E74lUFsvs5R/u5JNk/FG8kfpkaScmx6scwFmkcpK4hBQU2LDRxfIz/sbeOHXgRnmRl7agvNCQemY0SYomKUP3gWo71YQq1efCcvwGmQ9c8qcCBs9sGFeD0pQWmbysajBePDMT9gZNhOrM+3vXnFaQ5x7mmWKHeS5ByjCDa90b0trVfjr/i75DPQOAOGf/8m4=
+  skip_cleanup: true
   on:
     tags: true
     repo: QuickBase/babel-plugin-styled-components-css-namespace
