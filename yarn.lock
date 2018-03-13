@@ -2,6 +2,20 @@
 # yarn lockfile v1
 
 
+"@babel/helper-annotate-as-pure@^7.0.0-beta.37":
+  version "7.0.0-beta.40"
+  resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.0.0-beta.40.tgz#095dd4c70b231eba17ebf61c3434e6f9d71bd574"
+  dependencies:
+    "@babel/types" "7.0.0-beta.40"
+
+"@babel/types@7.0.0-beta.40":
+  version "7.0.0-beta.40"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.0.0-beta.40.tgz#25c3d7aae14126abe05fcb098c65a66b6d6b8c14"
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.2.0"
+    to-fast-properties "^2.0.0"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -442,12 +456,13 @@ babel-plugin-jest-hoist@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-21.2.0.tgz#2cef637259bd4b628a6cace039de5fcd14dbb006"
 
-babel-plugin-styled-components@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.2.1.tgz#e1593f2a6a0327e2d156695306e60c4dd175866d"
+babel-plugin-styled-components@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.5.1.tgz#31dbeb696d1354d1585e60d66c7905f5e474afcd"
   dependencies:
+    "@babel/helper-annotate-as-pure" "^7.0.0-beta.37"
     babel-types "^6.26.0"
-    stylis "^3.2.1"
+    stylis "^3.0.0"
 
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
@@ -1084,7 +1099,11 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0, core-js@^2.5.0:
+core-js@^2.4.0:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
+
+core-js@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
@@ -2577,9 +2596,13 @@ lodash.merge@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
 
-lodash@^4.14.0, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.14.0, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^4.17.4:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -3148,8 +3171,8 @@ regenerator-runtime@^0.10.5:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
 regenerator-runtime@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.0.tgz#7e54fe5b5ccd5d6624ea6255c3473be090b802e1"
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
@@ -3556,9 +3579,13 @@ styled-components@2.2.2:
     stylis "3.x"
     supports-color "^3.2.3"
 
-stylis@3.x, stylis@^3.2.1:
+stylis@3.x:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.4.0.tgz#55c6530ebceeca5976d54fb4adc67578afee828d"
+
+stylis@^3.0.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.5.0.tgz#016fa239663d77f868fef5b67cf201c4b7c701e1"
 
 supports-color@^2.0.0:
   version "2.0.0"
