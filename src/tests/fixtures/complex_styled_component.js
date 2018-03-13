@@ -10,3 +10,5 @@ const MyStyledComponent = styled.div`
     border: 1px solid black;
   }
 `;
+
+export default MyStyledComponent;

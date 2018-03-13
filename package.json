@@ -143,7 +143,8 @@
           "avoidEscape": true,
           "allowTemplateLiterals": true
         }
-      ]
+      ],
+      "no-unused-vars": 2
     }
   },
   "dependencies": {
