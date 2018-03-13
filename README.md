@@ -88,3 +88,15 @@ This plugin will automatically add additional css namespaces or duplicated class
 1. Clone the repo with `git clone https://github.com/QuickBase/babel-plugin-styled-components-css-namespace.git`
 1. `yarn install` (prefer `yarn` although `npm` should work as well)
 1. `yarn test` to run the tests
+
+# Publishing
+
+When we are ready to release a new version, one of the admins needs to run the following commands to publish the new version to npm.
+We probably need to invest in a better deploy and semver management system. Interested? See [this issue](https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/issues/9).
+
+- If needed, open a new PR to update the version in the [package.json](https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/blob/master/package.json)
+- Copy the commit hash from the [commit log](https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/commits/master)
+- Run `git tag -a {version} {commit_hash}`
+- In the editor, add a message about the changes in this version and save
+- Push the tag to GitHub with `git push --follow-tags`
+- Travis CI will build and publish the new version to npm
