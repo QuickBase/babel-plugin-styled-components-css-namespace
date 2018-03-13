@@ -1,8 +1,5 @@
 import * as t from 'babel-types';
-import {
-  isStyled,
-  isHelper
-} from 'babel-plugin-styled-components/lib/utils/detectors';
+import { isStyled } from 'babel-plugin-styled-components/lib/utils/detectors';
 
 const getCssNamespace = state => {
   const { cssNamespace } = state.opts;
