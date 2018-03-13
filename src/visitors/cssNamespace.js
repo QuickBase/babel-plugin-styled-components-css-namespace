@@ -21,7 +21,7 @@ export default (path, state) => {
   const cssNamespace = getCssNamespace(state);
 
   if (
-    (isStyled(path.node.tag, state) || isHelper(path.node.tag, state)) &&
+    isStyled(path.node.tag, state) &&
     path.node.quasi.quasis[0].value.cooked &&
     !path.node.quasi.quasis[0].value.cooked.startsWith(`\n${cssNamespace} {`)
   ) {

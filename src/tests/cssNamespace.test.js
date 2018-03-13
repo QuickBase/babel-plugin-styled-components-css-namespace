@@ -13,6 +13,7 @@ pluginTester({
       title: 'adds namespace to simple styled-component',
       fixture: path.join(__dirname, './fixtures/simple_styled_component.js')
     },
+
     {
       title: 'adds namespace to complex styled-component',
       fixture: path.join(__dirname, './fixtures/complex_styled_component.js')
@@ -36,6 +37,13 @@ pluginTester({
         'does not transform a template string that is not a styled component',
       snapshot: false, // snapshot should be false because code should be unmodified
       fixture: path.join(__dirname, './fixtures/not_styled_component.js')
+    },
+    {
+      title: 'does not add extra selectors to child helper styles',
+      fixture: path.join(
+        __dirname,
+        './fixtures/nested_helper_styled_component.js'
+      )
     }
   ]
 });
