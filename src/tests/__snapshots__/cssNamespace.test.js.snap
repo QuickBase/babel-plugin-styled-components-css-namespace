@@ -54,6 +54,38 @@ const MyStyledComponent = styled.div\`
 "
 `;
 
+exports[`does not add extra selectors to child helper styles 1`] = `
+"
+const styled = { div() {} };
+const css = { css() {} };
+
+const styledCSS = css\`
+  width: 100px;
+\`;
+
+const MyStyledComponent = styled.div\`
+  background-color: 'yellow';
+  \${styledCSS};
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+const css = { css() {} };
+
+const styledCSS = css\`
+  width: 100px;
+\`;
+
+const MyStyledComponent = styled.div\`
+&& {
+  background-color: 'yellow';
+  \${styledCSS};
+}
+\`;
+"
+`;
+
 exports[`uses a namespace specified in the options 1`] = `
 "
 const styled = { div() {} };
