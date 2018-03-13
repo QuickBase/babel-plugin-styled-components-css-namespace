@@ -96,7 +96,7 @@ We probably need to invest in a better deploy and semver management system. Inte
 
 - If needed, open a new PR to update the version in the [package.json](https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/blob/master/package.json)
 - Copy the commit hash from the [commit log](https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/commits/master)
-- Run `git tag -a {version} {commit_hash}`
+- Run `git tag -a {version} {commit_hash}`. For example: `git tag -a 0.0.9 abf3123`
 - In the editor, add a message about the changes in this version and save
 - Push the tag to GitHub with `git push --follow-tags`
 - Travis CI will build and publish the new version to npm
