@@ -20,7 +20,9 @@ export default (path, state) => {
     isStyled(path.node.tag, state) &&
     path.node.quasi.quasis[0].value.cooked &&
     !path.node.quasi.quasis[0].value.cooked.startsWith(`\n${cssNamespace} {`) &&
-    path.node.tag.property.name !== 'keyframes'
+    (path.node.tag.property
+      ? path.node.tag.property.name !== 'keyframes'
+      : true)
   ) {
     const { tag: callee, quasi: { quasis, expressions } } = path.node;
 

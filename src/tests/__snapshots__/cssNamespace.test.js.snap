@@ -1,47 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Do not namespace keyframes 1`] = `
-"
-const styled = { div() {} };
-
-const mymove = styled.keyframes\`
-  0% {
-    color: transparent;
-  }
-  100% {
-    color: radboats;
-  }
-\`;
-
-const MyStyledComponent = styled.div\`
-  animation: \${mymove} 5s infinite;
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = { div() {} };
-
-const mymove = styled.keyframes\`
-  0% {
-    color: transparent;
-  }
-  100% {
-    color: radboats;
-  }
-\`;
-
-const MyStyledComponent = styled.div\`
-.specific & {
-  animation: \${mymove} 5s infinite;
-}
-\`;
-
-export default MyStyledComponent;
-"
-`;
-
 exports[`adds namespace to complex styled-component 1`] = `
 "
 const styled = { div() {} };
@@ -73,6 +31,42 @@ const MyStyledComponent = styled.div\`
   & {
     border: 1px solid black;
   }
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`adds namespace to extended styled-components 1`] = `
+"
+const styled = () => {};
+styled.div = () => {};
+
+const styledDiv = styled.div\`
+  width: 100px;
+\`;
+
+const MyStyledComponent = styled(styledDiv)\`
+  background-color: 'yellow';
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = () => {};
+styled.div = () => {};
+
+const styledDiv = styled.div\`
+&& {
+  width: 100px;
+}
+\`;
+
+const MyStyledComponent = styled(styledDiv)\`
+&& {
+  background-color: 'yellow';
 }
 \`;
 
@@ -133,6 +127,48 @@ const MyStyledComponent = styled.div\`
 && {
   background-color: 'yellow';
   \${styledCSS};
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`does not add namespace to keyframes 1`] = `
+"
+const styled = { div() {} };
+
+const mymove = styled.keyframes\`
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: radboats;
+  }
+\`;
+
+const MyStyledComponent = styled.div\`
+  animation: \${mymove} 5s infinite;
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const mymove = styled.keyframes\`
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: radboats;
+  }
+\`;
+
+const MyStyledComponent = styled.div\`
+.specific & {
+  animation: \${mymove} 5s infinite;
 }
 \`;
 
