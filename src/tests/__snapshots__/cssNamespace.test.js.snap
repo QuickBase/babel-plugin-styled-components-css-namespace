@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Do not namespace keyframes 1`] = `
+"
+const styled = { div() {} };
+
+const mymove = styled.keyframes\`
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: radboats;
+  }
+\`;
+
+const MyStyledComponent = styled.div\`
+  animation: \${mymove} 5s infinite;
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const mymove = styled.keyframes\`
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: radboats;
+  }
+\`;
+
+const MyStyledComponent = styled.div\`
+.specific & {
+  animation: \${mymove} 5s infinite;
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
 exports[`adds namespace to complex styled-component 1`] = `
 "
 const styled = { div() {} };

@@ -44,6 +44,13 @@ pluginTester({
         __dirname,
         './fixtures/nested_helper_styled_component.js'
       )
+    },
+    {
+      title: 'Do not namespace keyframes',
+      pluginOptions: {
+        cssNamespace: 'specific'
+      },
+      fixture: path.join(__dirname, './fixtures/keyframes_styled_component.js')
     }
   ]
 });
