@@ -16,11 +16,13 @@ const getCssNamespace = state => {
 
 export default (path, state) => {
   const cssNamespace = getCssNamespace(state);
-
   if (
     isStyled(path.node.tag, state) &&
     path.node.quasi.quasis[0].value.cooked &&
-    !path.node.quasi.quasis[0].value.cooked.startsWith(`\n${cssNamespace} {`)
+    !path.node.quasi.quasis[0].value.cooked.startsWith(`\n${cssNamespace} {`) &&
+    (path.node.tag.property
+      ? path.node.tag.property.name !== 'keyframes'
+      : true)
   ) {
     const { tag: callee, quasi: { quasis, expressions } } = path.node;
 

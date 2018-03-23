@@ -42,7 +42,7 @@ You can provide a `cssNamespace` to use instead of duplicating the class name. R
 ``` json
 "babel": {
   "plugins": [
-    ["styled-components-css-namespace", {"cssNamespace": "moreSpecific"}],
+    ["@quickbaseoss/babel-plugin-styled-components-css-namespace", {"cssNamespace": "moreSpecific"}],
     "styled-components"
   ]
 }
@@ -60,7 +60,7 @@ You can provide an array `cssNamespace`s to use instead of duplicating the class
 ``` json
 "babel": {
   "plugins": [
-    ["styled-components-css-namespace", {"cssNamespace": ["moreSpecific", "reallySpecific", "extraSpecific"]}],
+    ["@quickbaseoss/babel-plugin-styled-components-css-namespace", {"cssNamespace": ["moreSpecific", "reallySpecific", "extraSpecific"]}],
     "styled-components"
   ]
 }

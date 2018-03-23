@@ -44,6 +44,17 @@ pluginTester({
         __dirname,
         './fixtures/nested_helper_styled_component.js'
       )
+    },
+    {
+      title: 'does not add namespace to keyframes',
+      pluginOptions: {
+        cssNamespace: 'specific'
+      },
+      fixture: path.join(__dirname, './fixtures/keyframes_styled_component.js')
+    },
+    {
+      title: 'adds namespace to extended styled-components',
+      fixture: path.join(__dirname, './fixtures/extended_styled_component.js')
     }
   ]
 });
