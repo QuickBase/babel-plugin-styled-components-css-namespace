@@ -71,6 +71,12 @@ You can provide an array `cssNamespace`s to use instead of duplicating the class
 .moreSpecific .reallySpecific .extraSpecific .hzy34z {background-color: blue;}
 ```
 
+## Known Issues
+
+The plugin currently has fairly simple logic for applying a more specific selector. While this covers most use cases, you may see issues if you use sibling or child selectors with `&`. For example, `& + &` or `.invalid &` will place the more specific selector in the wrong place.
+
+https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/issues/12
+
 ## The Problem
 
 [styled-components](https://github.com/QuickBase/styled-components) is an awesome library for css-in-js and feels like a natural combination of React and CSS. It is easy to use and produces css instead of inline styles.
