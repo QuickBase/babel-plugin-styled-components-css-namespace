@@ -55,6 +55,39 @@ pluginTester({
     {
       title: 'adds namespace to extended styled-components',
       fixture: path.join(__dirname, './fixtures/extended_styled_component.js')
+    },
+
+    {
+      title:
+        'uses a namespace specified in the options as post process wrapper',
+      pluginOptions: {
+        postProcessCssNamespace: 'body .specific .rule'
+      },
+      fixture: path.join(__dirname, './fixtures/complex_styled_component.js')
+    },
+    {
+      title:
+        'uses an array of namespaces specified in the options as post process wrapper',
+      pluginOptions: {
+        postProcessCssNamespace: ['body .specific .rule', 'body.roots .rules']
+      },
+      fixture: path.join(__dirname, './fixtures/complex_styled_component.js')
+    },
+    {
+      title:
+        'does not add namespace to keyframes as part of the post process wrapper',
+      pluginOptions: {
+        postProcessCssNamespace: 'body .specific .rule'
+      },
+      fixture: path.join(__dirname, './fixtures/keyframes_styled_component.js')
+    },
+    {
+      title:
+        'creates wrappers as part of post process not affecting css rules applied in the styled components',
+      pluginOptions: {
+        postProcessCssNamespace: ['body .specific .rule', '#different-wrapper']
+      },
+      fixture: path.join(__dirname, './fixtures/compost_styled_component.js')
     }
   ]
 });
