@@ -59,7 +59,7 @@ pluginTester({
 
     {
       title:
-        'uses a namespace specified in the options as post process wrapper',
+        'uses a namespace specified in the options as simple wrapper raw wrapper',
       pluginOptions: {
         rawCssNamespace: 'body .specific .rule'
       },
@@ -67,7 +67,7 @@ pluginTester({
     },
     {
       title:
-        'uses an array of namespaces specified in the options as post process wrapper',
+        'uses an array of namespaces specified in the options as simple wrapper raw wrapper',
       pluginOptions: {
         rawCssNamespace: ['body .specific .rule', 'body.roots .rules']
       },
@@ -75,7 +75,7 @@ pluginTester({
     },
     {
       title:
-        'does not add namespace to keyframes as part of the post process wrapper',
+        'does not add namespace to keyframes as part of the simple raw wrapper',
       pluginOptions: {
         rawCssNamespace: 'body .specific .rule'
       },
@@ -83,11 +83,22 @@ pluginTester({
     },
     {
       title:
-        'creates wrappers as part of post process not affecting css rules applied in the styled components',
+        'creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components',
       pluginOptions: {
         rawCssNamespace: ['body .specific .rule', '#different-wrapper']
       },
       fixture: path.join(__dirname, './fixtures/compost_styled_component.js')
+    },
+    {
+      title:
+        'creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components',
+      pluginOptions: {
+        rawCssNamespace: ['body .specific .rule', '#different-wrapper']
+      },
+      fixture: path.join(
+        __dirname,
+        './fixtures/double_self_refs_styled_component.js'
+      )
     }
   ]
 });

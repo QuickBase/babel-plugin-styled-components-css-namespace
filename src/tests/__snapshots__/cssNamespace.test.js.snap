@@ -98,7 +98,7 @@ export default MyStyledComponent;
 "
 `;
 
-exports[`creates wrappers as part of post process not affecting css rules applied in the styled components 1`] = `
+exports[`creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components 1`] = `
 "
 const styled = { div() {} };
 
@@ -117,6 +117,34 @@ const styled = { div() {} };
 const MyStyledComponent = styled.div\`
 body .specific .rule, #different-wrapper {
   label + & {
+    background-color: 'yellow';
+  }
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components 2`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  & + & {
+    background-color: 'yellow';
+  }
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+body .specific .rule, #different-wrapper {
+  & + & {
     background-color: 'yellow';
   }
 }
@@ -204,7 +232,7 @@ export default MyStyledComponent;
 "
 `;
 
-exports[`does not add namespace to keyframes as part of the post process wrapper 1`] = `
+exports[`does not add namespace to keyframes as part of the simple raw wrapper 1`] = `
 "
 const styled = { div() {} };
 
@@ -284,7 +312,7 @@ export default MyStyledComponent;
 "
 `;
 
-exports[`uses a namespace specified in the options as post process wrapper 1`] = `
+exports[`uses a namespace specified in the options as simple wrapper raw wrapper 1`] = `
 "
 const styled = { div() {} };
 
@@ -360,7 +388,7 @@ export default MyStyledComponent;
 "
 `;
 
-exports[`uses an array of namespaces specified in the options as post process wrapper 1`] = `
+exports[`uses an array of namespaces specified in the options as simple wrapper raw wrapper 1`] = `
 "
 const styled = { div() {} };
 
