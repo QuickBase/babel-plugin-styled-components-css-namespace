@@ -1,7 +1,14 @@
 import * as t from 'babel-types';
 import { isStyled } from 'babel-plugin-styled-components/lib/utils/detectors';
 
-const containsInitialSelfReference = css =>
+/**
+ * Validates if a css rule contains a self reference "&". It is valid if
+ * `.someClass & {` or `& {`, but, in case of `.myClass { ... } .myClass + & {`
+ * it would be false as the regex requires the first rule be based on a self
+ * reference.
+ * @param {string} css
+ */
+const startsWithSelfReference = css =>
   /^(([^\{]([\w-_,:+\s]+))*\&\s*([^\{]([\w-_,:+\s]+))*)+[\{]/g.test(css.trim());
 
 const getCssNamespace = state => {
@@ -14,7 +21,7 @@ const getCssNamespace = state => {
   const wrapperClass = isCssNamespaceSet
     ? `.${[].concat(cssNamespace).join(' .')} &`
     : `${[].concat(rawCssNamespace).join(', ')}`;
-  const hasNamespaceSelfReference = containsInitialSelfReference(
+  const hasNamespaceSelfReference = startsWithSelfReference(
     `${wrapperClass} {`
   );
   return { cssNamespace: wrapperClass, hasNamespaceSelfReference };
@@ -55,14 +62,14 @@ export default (path, state) => {
               cssNamespace,
               quasis[0].value.cooked,
               hasNamespaceSelfReference ||
-                containsInitialSelfReference(quasis[0].value.cooked),
+                startsWithSelfReference(quasis[0].value.cooked),
               NO_STRIP
             )}\n`,
             raw: `\n${wrapCssDefinition(
               cssNamespace,
               quasis[0].value.raw,
               hasNamespaceSelfReference ||
-                containsInitialSelfReference(quasis[0].value.raw),
+                startsWithSelfReference(quasis[0].value.raw),
               NO_STRIP
             )}\n`
           },
@@ -72,10 +79,10 @@ export default (path, state) => {
     } else {
       const isCookedSelfReferenced =
         hasNamespaceSelfReference ||
-        containsInitialSelfReference(quasis[0].value.cooked);
+        startsWithSelfReference(quasis[0].value.cooked);
       const isRawSelfReferenced =
         hasNamespaceSelfReference ||
-        containsInitialSelfReference(quasis[0].value.raw);
+        startsWithSelfReference(quasis[0].value.raw);
 
       const first = t.templateElement(
         {
