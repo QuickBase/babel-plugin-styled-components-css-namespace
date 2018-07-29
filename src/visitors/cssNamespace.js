@@ -5,27 +5,19 @@ const containsInitialSelfReference = css =>
   /^(([^\{]([\w-_,:+\s]+))*\&\s*([^\{]([\w-_,:+\s]+))*)+[\{]/g.test(css.trim());
 
 const getCssNamespace = state => {
-  const { cssNamespace, postProcessCssNamespace } = state.opts;
-  if (!cssNamespace && !postProcessCssNamespace) {
+  const { cssNamespace, rawCssNamespace } = state.opts;
+  if (!cssNamespace && !rawCssNamespace) {
     return { cssNamespace: '&&', hasNamespaceSelfReference: true };
   }
 
-  if (cssNamespace) {
-    const wrapperClass = `.${[].concat(cssNamespace).join(' .')} &`;
-    const hasNamespaceSelfReference = containsInitialSelfReference(
-      `${wrapperClass} {`
-    );
-    return { cssNamespace: wrapperClass, hasNamespaceSelfReference };
-  }
-
-  if (postProcessCssNamespace) {
-    const wrapperClass = `${[].concat(postProcessCssNamespace).join(', ')}`;
-    const hasNamespaceSelfReference = containsInitialSelfReference(
-      `${wrapperClass} {`
-    );
-
-    return { cssNamespace: wrapperClass, hasNamespaceSelfReference };
-  }
+  const isCssNamespaceSet = !!cssNamespace;
+  const wrapperClass = isCssNamespaceSet
+    ? `.${[].concat(cssNamespace).join(' .')} &`
+    : `${[].concat(rawCssNamespace).join(', ')}`;
+  const hasNamespaceSelfReference = containsInitialSelfReference(
+    `${wrapperClass} {`
+  );
+  return { cssNamespace: wrapperClass, hasNamespaceSelfReference };
 };
 
 const wrapCssDefinition = (
