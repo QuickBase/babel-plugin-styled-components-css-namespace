@@ -84,7 +84,7 @@ You can provide an array `cssNamespace`s to use instead of duplicating the class
 The plugin contains an option to define an alternative strategy to apply the css namespace. This behaviour allow developers to define what type of namespace. Currently, if one or more namespaces are added to `cssNamespace` the items are transformed into classes and join them.
 e.g.
 
-```js
+```json
 cssNamespace: ["body", "something"];
 ```
 
@@ -93,7 +93,7 @@ This will generate the rule `.body .something & { ... }` as namespace if you don
 Using the alternative strategy allow defining the type of namespace wished and, also, allow multiple namespaces.
 e.g.
 
-```js
+```json
 rawCssNamespace: ["body #rootElementId .specificClass", "#altRootElement"];
 ```
 
@@ -154,6 +154,10 @@ However, if you are trying to gradually introduce [styled-components](https://gi
 This plugin will automatically add additional css namespaces or duplicated classes to the selectors produced by styled components effectively creating a wall between the legacy css code and your new shiny styled components.
 
 ![monty-python-castle](https://media.giphy.com/media/12TIvbgMTrGhhu/giphy.gif)
+
+## Styling frameworks
+
+This plugin was built for [Styled Components](https://www.styled-components.com/); however, since initially creating it, we at Quick Base have switched to [Emotion](https://emotion.sh/). It works as an alternative to the [stylis extra scope plugin](https://github.com/Andarist/stylis-plugin-extra-scope) which requires creating your own instance of stylis.
 
 ## Developing
 
