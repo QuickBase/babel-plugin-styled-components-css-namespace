@@ -165,7 +165,7 @@ This plugin was built for [Styled Components](https://www.styled-components.com/
 1.  `yarn install` (prefer `yarn` although `npm` should work as well)
 1.  `yarn test` to run the tests
 
-# Publishing
+## Publishing
 
 When we are ready to release a new version, one of the admins needs to run the following commands to publish the new version to npm.
 We probably need to invest in a better deploy and semver management system. Interested? See [this issue](https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/issues/9).
