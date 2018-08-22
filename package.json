@@ -27,7 +27,8 @@
   "contributors": [
     "Gen Edwards <gedwards@quickbase.com>",
     "Michael Harris <mharris@quickbse.com>",
-    "Nick Vanselow <nvanselow@quickbase.com>"
+    "Nick Vanselow <nvanselow@quickbase.com>",
+    "Danilo Castro <daniloster@gmail.com>"
   ],
   "license": "MIT",
   "private": false,
@@ -149,13 +150,15 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "1.5.1",
-    "babel-types": "6.26.0"
+    "babel-types": "6.26.0",
+    "uuid": "3.3.2"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-jest": "^21.2.0",
     "babel-plugin-tester": "4.0.0",
+    "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.6.1",
     "eslint": "4.9.0",
     "eslint-config-prettier": "2.6.0",

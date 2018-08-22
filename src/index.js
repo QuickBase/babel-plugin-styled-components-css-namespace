@@ -1,4 +1,4 @@
-import cssNamespace from './visitors/cssNamespace';
+import cssNamespace from './visitors';
 
 export default function() {
   return {

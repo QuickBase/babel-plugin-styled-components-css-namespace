@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import pluginTester from 'babel-plugin-tester';
 import plugin from '../index';
 import path from 'path';
@@ -57,48 +58,51 @@ pluginTester({
       fixture: path.join(__dirname, './fixtures/extended_styled_component.js')
     },
 
-    {
-      title:
-        'uses a namespace specified in the options as simple wrapper raw wrapper',
-      pluginOptions: {
-        rawCssNamespace: 'body .specific .rule'
-      },
-      fixture: path.join(__dirname, './fixtures/complex_styled_component.js')
-    },
+    // {
+    //   title:
+    //     'uses a namespace specified in the options as simple wrapper raw wrapper',
+    //   pluginOptions: {
+    //     rawCssNamespace: 'body .specific .rule'
+    //   },
+    //   fixture: path.join(__dirname, './fixtures/complex_styled_component.js')
+    // },
     {
       title:
         'uses an array of namespaces specified in the options as simple wrapper raw wrapper',
       pluginOptions: {
         rawCssNamespace: ['body .specific .rule', 'body.roots .rules']
       },
-      fixture: path.join(__dirname, './fixtures/complex_styled_component.js')
-    },
-    {
-      title:
-        'does not add namespace to keyframes as part of the simple raw wrapper',
-      pluginOptions: {
-        rawCssNamespace: 'body .specific .rule'
-      },
-      fixture: path.join(__dirname, './fixtures/keyframes_styled_component.js')
-    },
-    {
-      title:
-        'creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components',
-      pluginOptions: {
-        rawCssNamespace: ['body .specific .rule', '#different-wrapper']
-      },
-      fixture: path.join(__dirname, './fixtures/compost_styled_component.js')
-    },
-    {
-      title:
-        'creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components',
-      pluginOptions: {
-        rawCssNamespace: ['body .specific .rule', '#different-wrapper']
-      },
       fixture: path.join(
         __dirname,
-        './fixtures/double_self_refs_styled_component.js'
+        './fixtures/super_complex_styled_component.js'
       )
     }
+    // {
+    //   title:
+    //     'does not add namespace to keyframes as part of the simple raw wrapper',
+    //   pluginOptions: {
+    //     rawCssNamespace: 'body .specific .rule'
+    //   },
+    //   fixture: path.join(__dirname, './fixtures/keyframes_styled_component.js')
+    // },
+    // {
+    //   title:
+    //     'creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components',
+    //   pluginOptions: {
+    //     rawCssNamespace: ['body .specific .rule', '#different-wrapper']
+    //   },
+    //   fixture: path.join(__dirname, './fixtures/compost_styled_component.js')
+    // },
+    // {
+    //   title:
+    //     'creates wrappers as part of the simple raw wrapper not affecting css rules applied in the styled components',
+    //   pluginOptions: {
+    //     rawCssNamespace: ['body .specific .rule', '#different-wrapper']
+    //   },
+    //   fixture: path.join(
+    //     __dirname,
+    //     './fixtures/double_self_refs_styled_component.js'
+    //   )
+    // }
   ]
 });
