@@ -40,6 +40,9 @@ pluginTester({
     },
     {
       title: 'does not add extra selectors to child helper styles',
+      pluginOptions: {
+        cssNamespace: 'specific'
+      },
       fixture: path.join(
         __dirname,
         './fixtures/nested_helper_styled_component.js'

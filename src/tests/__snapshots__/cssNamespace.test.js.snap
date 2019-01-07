@@ -180,7 +180,7 @@ const styledCSS = css\`
 \`;
 
 const MyStyledComponent = styled.div\`
-&& {
+.specific & {
   background-color: 'yellow';
   \${styledCSS};
 }
