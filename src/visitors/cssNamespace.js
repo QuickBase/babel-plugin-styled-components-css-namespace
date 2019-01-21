@@ -11,7 +11,7 @@ import { isStyled } from 'babel-plugin-styled-components/lib/utils/detectors';
 const startsWithSelfReference = css =>
   /^(([^\{]([\w-_,:+\s]+))*\&\s*([^\{]([\w-_,:+\s]+))*)+[\{]/g.test(css.trim());
 
-const getCssNamespace = state => {
+export const getCssNamespace = state => {
   const { cssNamespace, rawCssNamespace } = state.opts;
   if (!cssNamespace && !rawCssNamespace) {
     return { cssNamespace: '&&', hasNamespaceSelfReference: true };
@@ -19,8 +19,8 @@ const getCssNamespace = state => {
 
   const isCssNamespaceSet = !!cssNamespace;
   const wrapperClass = isCssNamespaceSet
-    ? `.${[].concat(cssNamespace).join(' .')} &`
-    : `${[].concat(rawCssNamespace).join(', ')}`;
+    ? `.${[].concat(cssNamespace).join(' .')}`
+    : `${[].concat(rawCssNamespace).join(' &, ')}`;
   const hasNamespaceSelfReference = startsWithSelfReference(
     `${wrapperClass} {`
   );

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styled-components output for a style block with && 1`] = `
+#different-wrapper .c0.c0 {
+  border: 1px solid fuchsia;
+}
+
+<input
+  className="c0"
+/>
+`;
+
+exports[`styled-components output for a style block with a sibling selector 1`] = `
+#different-wrapper .c0 + .c0 {
+  background-color: 'yellow';
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`styled-components output for a style block with no selectors 1`] = `
+#different-wrapper .c0 {
+  background-color: 'yellow';
+}
+
+<div
+  className="c0"
+/>
+`;
