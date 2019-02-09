@@ -1,7 +1,7 @@
 import path from 'path';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { transformFileSync } from 'babel-core';
+import { transformFileSync } from '@babel/core';
 import 'jest-styled-components';
 
 const evalFixture = filename => {
