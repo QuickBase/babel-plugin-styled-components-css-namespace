@@ -50,3 +50,14 @@ exports[`styled-components output for a style block with no selectors 1`] = `
   className="c0"
 />
 `;
+
+exports[`styled-components output for two consecutive template expressions 1`] = `
+#different-wrapper .c0 {
+  background-color: blue;
+  font-weight: bold;
+}
+
+<div
+  className="c0"
+/>
+`;

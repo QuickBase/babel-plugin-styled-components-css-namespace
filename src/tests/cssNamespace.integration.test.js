@@ -4,14 +4,9 @@ import renderer from 'react-test-renderer';
 import { transformFileSync } from '@babel/core';
 import 'jest-styled-components';
 
-const evalFixture = filename => {
+const evalFixture = (filename, cssNamespace = '#different-wrapper') => {
   const { code } = transformFileSync(filename, {
-    plugins: [
-      [
-        path.join(__dirname, '../index.js'),
-        { cssNamespace: '#different-wrapper' }
-      ]
-    ]
+    plugins: [[path.join(__dirname, '../index.js'), { cssNamespace }]]
   });
 
   if (code == null) throw new Error(`Fixture not found: ${filename}`);
@@ -57,6 +52,22 @@ describe('styled-components output', () => {
       renderer
         .create(
           <Parent childStyles="transform: scale(90%);" spaceBetween="12px" />
+        )
+        .toJSON()
+    ).toMatchSnapshot();
+  });
+
+  test('for two consecutive template expressions', () => {
+    const WithExpressions = evalFixture(
+      path.join(__dirname, 'fixtures/integration/consecutive_expressions.js')
+    );
+    expect(
+      renderer
+        .create(
+          <WithExpressions
+            firstChildCss="background-color: blue"
+            secondChildCss="font-weight: bold"
+          />
         )
         .toJSON()
     ).toMatchSnapshot();

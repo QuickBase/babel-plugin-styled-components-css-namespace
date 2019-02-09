@@ -76,7 +76,8 @@ export default (path, state) => {
       //   EXPRESSION: fakevalue;
       // }
       if (
-        (rawValueWithoutWhiteSpace === '{' ||
+        (rawValueWithoutWhiteSpace === '' ||
+          rawValueWithoutWhiteSpace === '{' ||
           rawValueWithoutWhiteSpace.endsWith(';')) &&
         nextQuasi &&
         nextQuasi.value.raw.startsWith(';')
