@@ -9,7 +9,7 @@ const evalFixture = filename => {
     plugins: [
       [
         path.join(__dirname, '../index.js'),
-        { rawCssNamespace: ['#different-wrapper'] }
+        { cssNamespace: '#different-wrapper' }
       ]
     ]
   });

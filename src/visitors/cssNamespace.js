@@ -16,33 +16,13 @@ const EXPRESSION = 'fake-element-placeholder';
 
 const replacementNodes = new WeakSet();
 
-/**
- * Validates if a css rule contains a self reference "&". It is valid if
- * `.someClass & {` or `& {`, but, in case of `.myClass { ... } .myClass + & {`
- * it would be false as the regex requires the first rule be based on a self
- * reference.
- * @param {string} css
- */
-const startsWithSelfReference = css =>
-  /^(([^\{]([\w-_,:+\s]+))*\&\s*([^\{]([\w-_,:+\s]+))*)+[\{]/g.test(css.trim());
-
-/**
- * TODO:: SIMPLIFY THIS NOW THAT WE DON'T NEED TO DETECT SELF-REFERENCE
- */
 const getCssNamespace = state => {
-  const { cssNamespace, rawCssNamespace } = state.opts;
-  if (!cssNamespace && !rawCssNamespace) {
-    return { cssNamespace: '&&', hasNamespaceSelfReference: true };
+  const { cssNamespace } = state.opts;
+  if (!cssNamespace) {
+    return { cssNamespace: '&&' };
   }
 
-  const isCssNamespaceSet = !!cssNamespace;
-  const wrapperClass = isCssNamespaceSet
-    ? `.${[].concat(cssNamespace).join(' .')}`
-    : `${[].concat(rawCssNamespace).join(' &, ')}`;
-  const hasNamespaceSelfReference = startsWithSelfReference(
-    `${wrapperClass} {`
-  );
-  return { cssNamespace: wrapperClass, hasNamespaceSelfReference };
+  return state.opts;
 };
 
 export default (path, state) => {
@@ -72,9 +52,11 @@ export default (path, state) => {
     .map((quasi, i) => {
       const rawValue = quasi.value.raw;
       const nextQuasi = quasis[i + 1];
+      const rawValueWithoutWhiteSpace = rawValue.replace(/[\n\r\s]/g, '');
       if (expressions[i]) {
         if (
-          rawValue.replace(/\s/g, '') === '{' &&
+          (rawValueWithoutWhiteSpace === '{' ||
+            rawValueWithoutWhiteSpace.endsWith(';')) &&
           nextQuasi &&
           nextQuasi.value.raw.startsWith(';')
         ) {
@@ -87,18 +69,6 @@ export default (path, state) => {
       return rawValue;
     })
     .join('');
-
-  // quasis.forEach((quasi, i) =>
-  //   console.log(
-  //     `${i}:${quasi.value.raw.replace(/[\n\r]/g, '[newline]')}`.replace(
-  //       /\s/g,
-  //       '[space]'
-  //     ),
-  //     `hasExpression: ${!!expressions[i]}`
-  //   )
-  // );
-  // console.log('ORIGINAL', quasis.map(quasi => quasi.value.raw).join('\n'));
-  // console.log('Formatted style string', originalStyleString);
 
   const doesPrefixStartsWithSelfReference = cssNamespace.startsWith('&');
   const prefix = doesPrefixStartsWithSelfReference ? cssNamespace : '&';

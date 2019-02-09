@@ -98,6 +98,42 @@ export default MyStyledComponent;
 "
 `;
 
+exports[`styled-components-css-namespace does not add extra selectors to child helper styles: does not add extra selectors to child helper styles 1`] = `
+"
+const styled = { div() {} };
+const css = { css() {} };
+
+const styledCSS = css\`
+  width: 100px;
+\`;
+
+const MyStyledComponent = styled.div\`
+  background-color: 'yellow';
+  \${styledCSS};
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+const css = { css() {} };
+
+const styledCSS = css\`
+  width: 100px;
+\`;
+
+const MyStyledComponent = styled.div\`
+&& {
+  background-color: 'yellow';
+  \${styledCSS};
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
 exports[`styled-components-css-namespace does not add namespace to keyframes as part of the simple raw wrapper: does not add namespace to keyframes as part of the simple raw wrapper 1`] = `
 "
 const styled = { div() {} };
@@ -281,6 +317,42 @@ export default styled.input\`
 "
 `;
 
+exports[`styled-components-css-namespace namespaces a style block with interpolated selectors: namespaces a style block with interpolated selectors 1`] = `
+"
+import styled from 'styled-components';
+
+const Child = styled.span;
+
+export default styled.div\`
+  position: relative;
+  \${Child} {
+    \${props => props.childStyles};
+  }
+  \${Child} + &, & + \${Child} {
+    margin-right: \${props => props.spaceBetween};
+  }
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import styled from 'styled-components';
+
+const Child = styled.span;
+
+export default styled.div\`
+#different-wrapper & {
+  position: relative;
+}
+  #different-wrapper & \${Child} {
+    \${props => props.childStyles};
+  }
+  #different-wrapper \${Child} + &, #different-wrapper & + \${Child} {
+    margin-right: \${props => props.spaceBetween};
+  }
+\`;
+"
+`;
+
 exports[`styled-components-css-namespace uses a namespace specified in the options as simple wrapper raw wrapper: uses a namespace specified in the options as simple wrapper raw wrapper 1`] = `
 "
 const styled = { div() {} };
@@ -349,44 +421,6 @@ const MyStyledComponent = styled.div\`
 }
 
   .moreSpecific & {
-    border: 1px solid black;
-  }
-\`;
-
-export default MyStyledComponent;
-"
-`;
-
-exports[`styled-components-css-namespace uses an array of namespaces specified in the options as simple wrapper raw wrapper: uses an array of namespaces specified in the options as simple wrapper raw wrapper 1`] = `
-"
-const styled = { div() {} };
-
-const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
-  font-size: 30px;
-  padding: 20px;
-
-  & {
-    border: 1px solid black;
-  }
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = { div() {} };
-
-const MyStyledComponent = styled.div\`
-body .specific .rule &, body.roots .rules & {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
-  font-size: 30px;
-  padding: 20px;
-}
-
-  body .specific .rule &, body.roots .rules & {
     border: 1px solid black;
   }
 \`;
