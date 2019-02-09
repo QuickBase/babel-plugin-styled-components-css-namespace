@@ -11,12 +11,12 @@ exports[`styled-components output for a style block with && 1`] = `
 `;
 
 exports[`styled-components output for a style block with a sibling selector 1`] = `
-#different-wrapper .c0 + .c0 {
+#different-wrapper .c1 + .c0 {
   background-color: 'yellow';
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 />
 `;
 

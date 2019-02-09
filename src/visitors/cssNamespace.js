@@ -37,8 +37,8 @@ const getCssNamespace = state => {
 
   const isCssNamespaceSet = !!cssNamespace;
   const wrapperClass = isCssNamespaceSet
-    ? `.${[].concat(cssNamespace).join(' .')} &`
-    : `${[].concat(rawCssNamespace).join(', ')}`;
+    ? `.${[].concat(cssNamespace).join(' .')}`
+    : `${[].concat(rawCssNamespace).join(' &, ')}`;
   const hasNamespaceSelfReference = startsWithSelfReference(
     `${wrapperClass} {`
   );
