@@ -295,6 +295,86 @@ export const Clearfix = css\`
 "
 `;
 
+exports[`styled-components-css-namespace handles case where styled component ends with expression: handles case where styled component ends with expression 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
+  color: \${props => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+
+  \${props => (props.isDark ? 'color: red' : 'color: white')};
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+#different-wrapper & {
+  background-color: \${props => props.isDark ? 'red' : 'yellow'};
+  color: \${props => props.isDark ? 'white' : 'navy'};
+  font-size: 30px;
+  padding: 20px;
+
+  \${props => props.isDark ? 'color: red' : 'color: white'};
+}
+
+  #different-wrapper & {
+    border: 1px solid black;
+  }
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`styled-components-css-namespace handles case where styled component has only an expression in a css block: handles case where styled component has only an expression in a css block 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
+  color: \${props => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  &:hover {
+    \${props => (props.isDark ? 'color: red' : 'color: white')};
+  }
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+#different-wrapper & {
+  background-color: \${props => props.isDark ? 'red' : 'yellow'};
+  color: \${props => props.isDark ? 'white' : 'navy'};
+  font-size: 30px;
+  padding: 20px;
+}
+
+  #different-wrapper &:hover {
+    \${props => props.isDark ? 'color: red' : 'color: white'};
+  }
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
 exports[`styled-components-css-namespace namespaces a style block with &&: namespaces a style block with && 1`] = `
 "
 const styled = { input() {} };

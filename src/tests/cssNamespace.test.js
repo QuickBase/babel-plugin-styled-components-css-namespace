@@ -93,6 +93,27 @@ pluginTester({
         cssNamespace: '#different-wrapper'
       },
       fixture: path.join(__dirname, './fixtures/helpers.js')
+    },
+    {
+      title: 'handles case where styled component ends with expression',
+      pluginOptions: {
+        cssNamespace: '#different-wrapper'
+      },
+      fixture: path.join(
+        __dirname,
+        './fixtures/styled_components_ends_with_expression.js'
+      )
+    },
+    {
+      title:
+        'handles case where styled component has only an expression in a css block',
+      pluginOptions: {
+        cssNamespace: '#different-wrapper'
+      },
+      fixture: path.join(
+        __dirname,
+        './fixtures/styled_components_only_expression_in_block.js'
+      )
     }
   ]
 });

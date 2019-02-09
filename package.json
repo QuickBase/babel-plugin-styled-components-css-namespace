@@ -145,7 +145,8 @@
     "deasync": "0.1.x",
     "postcss": "7.0.x",
     "postcss-nested": "4.1.x",
-    "postcss-parent-selector": "1.0.x"
+    "postcss-parent-selector": "1.0.x",
+    "postcss-safe-parser": "4.0.x"
   },
   "devDependencies": {
     "@babel/cli": "7.2.x",

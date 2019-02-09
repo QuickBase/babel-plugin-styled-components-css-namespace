@@ -11,6 +11,7 @@ import { loopWhile } from 'deasync';
 import postcss from 'postcss';
 import parentSelector from 'postcss-parent-selector';
 import unnest from 'postcss-nested';
+import safeParser from 'postcss-safe-parser';
 
 const EXPRESSION = 'fake-element-placeholder';
 const FAKE_VALUE = 'fakevalue';
@@ -77,10 +78,10 @@ export default (path, state) => {
       // }
       if (
         (rawValueWithoutWhiteSpace === '' ||
-          rawValueWithoutWhiteSpace === '{' ||
+          rawValueWithoutWhiteSpace.endsWith('{') ||
+          rawValueWithoutWhiteSpace.endsWith('}') ||
           rawValueWithoutWhiteSpace.endsWith(';')) &&
-        nextQuasi &&
-        nextQuasi.value.raw.startsWith(';')
+        (!nextQuasi || (nextQuasi && nextQuasi.value.raw.startsWith(';')))
       ) {
         return `${rawValue}${EXPRESSION}: ${FAKE_VALUE}`;
       }
@@ -96,7 +97,9 @@ export default (path, state) => {
   // Add a self-reference if it doesn't exist so we get proper nesting
   const prefix = doesPrefixStartsWithSelfReference ? cssNamespace : '&';
 
-  const processors = [unnest];
+  // Adding safeparser first helps us try to format any other invalid css we may encounter like
+  // using js comments (//) instead of css comments (/*).
+  const processors = [safeParser, unnest];
   if (!doesPrefixStartsWithSelfReference) {
     processors.push(parentSelector({ selector: cssNamespace }));
   }
@@ -111,7 +114,7 @@ export default (path, state) => {
     .catch(error => {
       potentialError = `There was a problem adding namespaces to this CSS. Error: ${
         error.message
-      }`;
+      }\n CSS: ${originalStyleString}`;
       formattedCss = 'ERROR';
     });
   // Allows us to turn the async promise into synchronous code for the purpose of the plugin
