@@ -52,14 +52,14 @@
   "babel": {
     "presets": [
       [
-        "env",
+        "@babel/preset-env",
         {
           "targets": {
-            "node": 8
+            "node": 11
           }
         }
       ],
-      "react"
+      "@babel/preset-react"
     ]
   },
   "eslintConfig": {
@@ -135,34 +135,34 @@
     }
   },
   "dependencies": {
-    "babel-plugin-styled-components": "1.10.0",
-    "babel-types": "6.26.0",
-    "deasync": "^0.1.14",
-    "postcss": "^7.0.13",
-    "postcss-nested": "^4.1.1",
-    "postcss-parent-selector": "^1.0.0"
+    "babel-plugin-styled-components": "1.10.x",
+    "babel-types": "6.26.x",
+    "deasync": "0.1.x",
+    "postcss": "7.0.x",
+    "postcss-nested": "4.1.x",
+    "postcss-parent-selector": "1.0.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "babel-cli": "6.26.0",
-    "babel-eslint": "8.0.1",
-    "babel-jest": "^23.6.0",
-    "babel-plugin-tester": "4.0.0",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "eslint": "4.9.0",
-    "eslint-config-prettier": "2.6.0",
-    "eslint-plugin-prettier": "2.3.1",
-    "eslint-plugin-react": "^7.12.4",
-    "husky": "^0.14.3",
-    "jest": "23.6.0",
-    "jest-styled-components": "^6.3.1",
-    "lint-staged": "4.3.0",
-    "prettier": "1.7.4",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-test-renderer": "^16.7.0",
-    "rimraf": "2.6.2",
-    "styled-components": "2.2.2"
+    "@babel/cli": "7.2.x",
+    "@babel/core": "7.2.x",
+    "@babel/preset-env": "7.3.x",
+    "@babel/preset-react": "7.0.x",
+    "babel-eslint": "10.0.x",
+    "babel-jest": "24.1.x",
+    "babel-plugin-tester": "5.5.x",
+    "eslint": "5.13.x",
+    "eslint-config-prettier": "4.0.x",
+    "eslint-plugin-prettier": "3.0.x",
+    "eslint-plugin-react": "7.12.x",
+    "husky": "1.3.x",
+    "jest": "24.1.x",
+    "jest-styled-components": "6.3.x",
+    "lint-staged": "8.1.x",
+    "prettier": "1.16.x",
+    "react": "16.8.x",
+    "react-dom": "16.8.x",
+    "react-test-renderer": "16.8.x",
+    "rimraf": "2.6.x",
+    "styled-components": "4.1.x"
   }
 }
