@@ -33,7 +33,8 @@
   "private": false,
   "scripts": {
     "clean": "rimraf lib",
-    "build": "babel src -d lib --ignore src/tests",
+    "prebuild": "yarn run clean",
+    "build": "babel src -d lib --ignore src/tests,src/vendor",
     "test": "jest",
     "test:watch": "yarn run test -- --watch",
     "prepare": "yarn run clean && yarn run build",
