@@ -13,6 +13,7 @@ import parentSelector from 'postcss-parent-selector';
 import unnest from 'postcss-nested';
 
 const EXPRESSION = 'fake-element-placeholder';
+const FAKE_VALUE = 'fakevalue';
 
 const replacementNodes = new WeakSet();
 
@@ -53,24 +54,45 @@ export default (path, state) => {
       const rawValue = quasi.value.raw;
       const nextQuasi = quasis[i + 1];
       const rawValueWithoutWhiteSpace = rawValue.replace(/[\n\r\s]/g, '');
-      if (expressions[i]) {
-        if (
-          (rawValueWithoutWhiteSpace === '{' ||
-            rawValueWithoutWhiteSpace.endsWith(';')) &&
-          nextQuasi &&
-          nextQuasi.value.raw.startsWith(';')
-        ) {
-          return `${rawValue}${EXPRESSION}: fakevalue`;
-        }
 
-        return rawValue + EXPRESSION;
+      // When there is no associated expression, we can return the plain string
+      if (!expressions[i]) {
+        return rawValue;
       }
 
-      return rawValue;
+      // In cases where the expression would result in invalid css, we need to add
+      // a fake value.
+      // For example,
+      // .button {
+      //   ${someVariableWithValidCss};
+      // }
+      // Without the following logic that would return as:
+      // .button {
+      //   EXPRESSION;
+      // }
+      // Which even the safe parser doesn't know how to handle.
+      // So we add a fake value to make it valid css.
+      // .button {
+      //   EXPRESSION: fakevalue;
+      // }
+      if (
+        (rawValueWithoutWhiteSpace === '{' ||
+          rawValueWithoutWhiteSpace.endsWith(';')) &&
+        nextQuasi &&
+        nextQuasi.value.raw.startsWith(';')
+      ) {
+        return `${rawValue}${EXPRESSION}: ${FAKE_VALUE}`;
+      }
+
+      // The rest of the time we can simply append the expression placeholder to the raw value.
+      return rawValue + EXPRESSION;
     })
     .join('');
 
+  // When the cssNamespace setting starts with a self-reference,
+  // we don't need to add a parent selector.
   const doesPrefixStartsWithSelfReference = cssNamespace.startsWith('&');
+  // Add a self-reference if it doesn't exist so we get proper nesting
   const prefix = doesPrefixStartsWithSelfReference ? cssNamespace : '&';
 
   const processors = [unnest];
@@ -91,6 +113,7 @@ export default (path, state) => {
       }`;
       formattedCss = 'ERROR';
     });
+  // Allows us to turn the async promise into synchronous code for the purpose of the plugin
   loopWhile(() => formattedCss === null);
 
   // If the css couldn't be parsed abort the plugin with an error.
@@ -98,6 +121,7 @@ export default (path, state) => {
     throw new Error(potentialError);
   }
 
+  // Remove the fakevalue and split on the EXPRESSION so we can replace it with the real expression
   const splitCss = formattedCss.replace(/:\sfakevalue/g, '').split(EXPRESSION);
   const values = splitCss.map((value, index) =>
     t.templateElement(
