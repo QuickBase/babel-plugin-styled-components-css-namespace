@@ -42,6 +42,11 @@
     "lint:js": "yarn run lint:eslint -- . ",
     "lint:eslint": "eslint --ignore-path .eslintignore"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "prettier --single-quote --write",
