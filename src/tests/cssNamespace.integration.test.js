@@ -49,17 +49,16 @@ describe('styled-components output', () => {
     ).toMatchSnapshot();
   });
 
-  // ENDLESS LOOP
-  // test('for a style block with interpolated selectors', () => {
-  //   const Parent = evalFixture(
-  //     path.join(__dirname, 'fixtures/interpolated_selector.js')
-  //   );
-  //   expect(
-  //     renderer
-  //       .create(
-  //         <Parent childStyles="transform: scale(90%);" spaceBetween="12px" />
-  //       )
-  //       .toJSON()
-  //   ).toMatchSnapshot();
-  // });
+  test('for a style block with interpolated selectors', () => {
+    const Parent = evalFixture(
+      path.join(__dirname, 'fixtures/interpolated_selector.js')
+    );
+    expect(
+      renderer
+        .create(
+          <Parent childStyles="transform: scale(90%);" spaceBetween="12px" />
+        )
+        .toJSON()
+    ).toMatchSnapshot();
+  });
 });

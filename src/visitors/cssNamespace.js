@@ -12,7 +12,7 @@ import postcss from 'postcss';
 import parentSelector from 'postcss-parent-selector';
 import unnest from 'postcss-nested';
 
-const EXPRESSION = '_____';
+const EXPRESSION = 'fake-element-placeholder';
 
 const replacementNodes = new WeakSet();
 
@@ -69,10 +69,36 @@ export default (path, state) => {
 
   // Convert the tagged template to a string, with ${} expressions replaced with placeholders
   const originalStyleString = quasis
-    .map((quasi, i) =>
-      expressions[i] ? quasi.value.raw + EXPRESSION : quasi.value.raw
-    )
+    .map((quasi, i) => {
+      const rawValue = quasi.value.raw;
+      const nextQuasi = quasis[i + 1];
+      if (expressions[i]) {
+        if (
+          rawValue.replace(/\s/g, '') === '{' &&
+          nextQuasi &&
+          nextQuasi.value.raw.startsWith(';')
+        ) {
+          return `${rawValue}${EXPRESSION}: fakevalue`;
+        }
+
+        return rawValue + EXPRESSION;
+      }
+
+      return rawValue;
+    })
     .join('');
+
+  // quasis.forEach((quasi, i) =>
+  //   console.log(
+  //     `${i}:${quasi.value.raw.replace(/[\n\r]/g, '[newline]')}`.replace(
+  //       /\s/g,
+  //       '[space]'
+  //     ),
+  //     `hasExpression: ${!!expressions[i]}`
+  //   )
+  // );
+  // console.log('ORIGINAL', quasis.map(quasi => quasi.value.raw).join('\n'));
+  // console.log('Formatted style string', originalStyleString);
 
   const doesPrefixStartsWithSelfReference = cssNamespace.startsWith('&');
   const prefix = doesPrefixStartsWithSelfReference ? cssNamespace : '&';
@@ -83,14 +109,26 @@ export default (path, state) => {
   }
 
   let formattedCss = null;
+  let potentialError = null;
   postcss(processors)
     .process(`\n${prefix} {${originalStyleString}}\n`, {
       from: undefined // clears warning about SourceMap and Browserlist from postcss
     })
-    .then(value => (formattedCss = value.css));
+    .then(value => (formattedCss = value.css))
+    .catch(error => {
+      potentialError = `There was a problem adding namespaces to this CSS. Error: ${
+        error.message
+      }`;
+      formattedCss = 'ERROR';
+    });
   loopWhile(() => formattedCss === null);
 
-  const splitCss = formattedCss.split(EXPRESSION);
+  // If the css couldn't be parsed abort the plugin with an error.
+  if (potentialError) {
+    throw new Error(potentialError);
+  }
+
+  const splitCss = formattedCss.replace(/:\sfakevalue/g, '').split(EXPRESSION);
   const values = splitCss.map((value, index) =>
     t.templateElement(
       { raw: value, cooked: value.replace(/\\\\/g, '\\') },

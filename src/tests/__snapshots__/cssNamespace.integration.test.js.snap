@@ -20,6 +20,27 @@ exports[`styled-components output for a style block with a sibling selector 1`] 
 />
 `;
 
+exports[`styled-components output for a style block with interpolated selectors 1`] = `
+#different-wrapper .c0 {
+  position: relative;
+}
+
+#different-wrapper .c0 .c1 {
+  -webkit-transform: scale(90%);
+  -ms-transform: scale(90%);
+  transform: scale(90%);
+}
+
+#different-wrapper .c2 + .c0,
+#different-wrapper .c0 + .sc-dnqmqq {
+  margin-right: 12px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
 exports[`styled-components output for a style block with no selectors 1`] = `
 #different-wrapper .c0 {
   background-color: 'yellow';
