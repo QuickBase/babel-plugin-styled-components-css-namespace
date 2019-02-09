@@ -63,6 +63,8 @@ _where .c0 is the class added by styled-components to the element_
 
 Note that `rawCssNamespace` was dropped in favor of the single `cssNamespace` option. Additionally, support for an array of selectors was dropped as well. Update any references to `rawCssNamespace` with `cssNamespace`.
 
+If you were already using `cssNamespace`, update your configuration to use a css selector rather than an array of classes. E.g., `cssNamespace: 'moreSpecific'` should be `cssNamespace: '.moreSpecific'` and `cssNamespace: ['specific', 'verySpecific']` should be `cssNamespace: '.specific .verySpecific'`.
+
 ## The Problem
 
 [styled-components](https://github.com/QuickBase/styled-components) is an awesome library for css-in-js and feels like a natural combination of React and CSS. It is easy to use and produces css instead of inline styles.
