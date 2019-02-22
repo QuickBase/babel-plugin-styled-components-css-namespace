@@ -39,7 +39,7 @@ pluginTester({
     {
       title: 'does not add extra selectors to child helper styles',
       pluginOptions: {
-        cssNamespace: 'specific'
+        cssNamespace: '.specific'
       },
       fixture: path.join(
         __dirname,
