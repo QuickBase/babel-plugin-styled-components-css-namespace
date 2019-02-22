@@ -1,6 +1,6 @@
 {
   "name": "@quickbaseoss/babel-plugin-styled-components-css-namespace",
-  "version": "0.1.1",
+  "version": "1.0.0-rc",
   "description": "A babel plugin to add css namespaces to all styled components.",
   "keywords": [
     "styled-components",
@@ -34,65 +34,45 @@
   "private": false,
   "scripts": {
     "clean": "rimraf lib",
-    "build": "babel src -d lib",
+    "build": "babel src -d lib --ignore src/tests,src/vendor",
     "test": "jest",
-    "test:watch": "npm run test -- --watch",
-    "prepare": "npm run clean && npm run build",
+    "test:watch": "yarn run test -- --watch",
+    "prepare": "yarn run clean && yarn run build",
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",
     "lint:js": "yarn run lint:eslint -- . ",
     "lint:eslint": "eslint --ignore-path .eslintignore"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "prettier --single-quote --write",
-      "lint:eslint",
+      "yarn run lint:eslint",
       "git add"
     ]
   },
   "babel": {
     "presets": [
       [
-        "env",
+        "@babel/preset-env",
         {
           "targets": {
-            "node": 4
+            "node": 11
           }
         }
-      ]
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/?(*.)(spec|test).js"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
+      ],
+      "@babel/preset-react"
     ]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": [
-      "prettier"
+      "prettier",
+      "plugin:react/recommended"
     ],
     "env": {
       "browser": false,
@@ -101,7 +81,8 @@
       "es6": true
     },
     "plugins": [
-      "prettier"
+      "prettier",
+      "react"
     ],
     "parserOptions": {
       "ecmaVersion": 6,
@@ -148,24 +129,48 @@
       "no-unused-vars": 2
     }
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)(spec|test).js"
+    ],
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    }
+  },
   "dependencies": {
-    "babel-plugin-styled-components": "1.5.1",
-    "babel-types": "6.26.0"
+    "babel-plugin-styled-components": "1.10.x",
+    "babel-types": "6.26.x",
+    "deasync": "0.1.x",
+    "postcss": "7.0.x",
+    "postcss-nested": "4.1.x",
+    "postcss-parent-selector": "1.0.x",
+    "postcss-safe-parser": "4.0.x"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-eslint": "8.0.1",
-    "babel-jest": "^21.2.0",
-    "babel-plugin-tester": "4.0.0",
-    "babel-preset-env": "1.6.1",
-    "eslint": "4.9.0",
-    "eslint-config-prettier": "2.6.0",
-    "eslint-plugin-prettier": "2.3.1",
-    "husky": "^0.14.3",
-    "jest": "21.2.1",
-    "lint-staged": "4.3.0",
-    "prettier": "1.7.4",
-    "rimraf": "2.6.2",
-    "styled-components": "2.2.2"
+    "@babel/cli": "7.2.x",
+    "@babel/core": "7.2.x",
+    "@babel/preset-env": "7.3.x",
+    "@babel/preset-react": "7.0.x",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "10.0.x",
+    "babel-jest": "24.1.x",
+    "babel-plugin-tester": "5.5.x",
+    "eslint": "5.13.x",
+    "eslint-config-prettier": "4.0.x",
+    "eslint-plugin-prettier": "3.0.x",
+    "eslint-plugin-react": "7.12.x",
+    "husky": "1.3.x",
+    "jest": "24.1.x",
+    "jest-styled-components": "6.3.x",
+    "lint-staged": "8.1.x",
+    "prettier": "1.16.x",
+    "react": "16.8.x",
+    "react-dom": "16.8.x",
+    "react-test-renderer": "16.8.x",
+    "rimraf": "2.6.x",
+    "styled-components": "4.1.x"
   }
 }
