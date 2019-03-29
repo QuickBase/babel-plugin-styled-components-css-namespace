@@ -37,6 +37,7 @@
     "build": "babel src -d lib --ignore src/tests,src/vendor",
     "test": "jest",
     "test:watch": "yarn run test -- --watch",
+    "test:snap": "yarn run test -- --updateSnapshot",
     "prepare": "yarn run clean && yarn run build",
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",

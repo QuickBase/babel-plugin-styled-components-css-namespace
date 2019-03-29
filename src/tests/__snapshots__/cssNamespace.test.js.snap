@@ -337,6 +337,74 @@ export default MyStyledComponent;
 "
 `;
 
+exports[`styled-components-css-namespace handles case where styled component has a media query: handles case where styled component has a media query 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: red;
+  @media only screen and (min-width: 426px) {
+    background-color: blue;
+  }
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+&& {
+  background-color: red;
+}
+  @media only screen and (min-width: 426px) {
+&& {
+    background-color: blue
+}
+  }
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`styled-components-css-namespace handles case where styled component has an interpolated media query: handles case where styled component has an interpolated media query 1`] = `
+"
+const styled = { div() {} };
+
+const mediaQuery = '@media only screen and (min-width: 426px)';
+
+const MyStyledComponent = styled.div\`
+  background-color: red;
+  \${mediaQuery} {
+    background-color: blue;
+  }
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const mediaQuery = '@media only screen and (min-width: 426px)';
+
+const MyStyledComponent = styled.div\`
+&& {
+  background-color: red;
+}
+  \${mediaQuery} {
+&& {
+  background-color: blue;
+}
+  }
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
 exports[`styled-components-css-namespace handles case where styled component has only an expression in a css block: handles case where styled component has only an expression in a css block 1`] = `
 "
 const styled = { div() {} };
