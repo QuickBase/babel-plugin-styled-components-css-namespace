@@ -26,9 +26,10 @@
   "author": "Quick Base",
   "contributors": [
     "Gen Edwards <gedwards@quickbase.com>",
-    "Michael Harris <mharris@quickbse.com>",
+    "Michael Harris <mharris@quickbase.com>",
     "Nick Vanselow <nvanselow@quickbase.com>",
-    "Danilo Castro <daniloster@gmail.com>"
+    "Danilo Castro <daniloster@gmail.com>",
+    "Zach Hardesty <hello@zachhardesty.com> (https://zachhardesty.com)"
   ],
   "license": "MIT",
   "private": false,
@@ -135,7 +136,7 @@
       "src/**/*.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/?(*.)(spec|test).js"
+      "<rootDir>/src/**/*.(spec|test).js"
     ],
     "transform": {
       "^.+\\.js?$": "babel-jest"
