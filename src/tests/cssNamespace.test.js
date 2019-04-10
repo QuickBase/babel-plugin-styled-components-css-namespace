@@ -117,6 +117,27 @@ pluginTester({
         __dirname,
         './fixtures/styled_components_only_expression_in_block.js'
       )
+    },
+    {
+      title: 'handles case where styled component has a media query',
+      fixture: path.join(
+        __dirname,
+        './fixtures/styled_component_with_media_query.js'
+      )
     }
+
+    /**
+     * @TODO fix failing test due to identical formatting of an interpolated media query
+     * and referring to other styled-components but very different desired outputs
+     * @see https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/issues/35
+     */
+    // {
+    //   title:
+    //     'handles case where styled component has an interpolated media query',
+    //   fixture: path.join(
+    //     __dirname,
+    //     './fixtures/styled_component_with_media_query_interpolation.js'
+    //   )
+    // }
   ]
 });

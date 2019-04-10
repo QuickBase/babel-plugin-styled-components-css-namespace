@@ -84,6 +84,43 @@ You can provide a `cssNamespace` to use instead of duplicating the class name. R
 
 _where .c0 is the class added by styled-components to the element_
 
+## Notes
+
+### Media Query String Interpolation
+
+While an uncommon use-case, it can often be useful to interpolate media query at-rules in your css
+template string. Compared to the [method for creating media queries from the
+styled-component docs](https://www.styled-components.com/docs/advanced#media-templates), this
+method reduces the overhead of multiple calls of `css` while still allowing queries to be
+constructed without requiring nested template literals.
+
+```javascript
+const mediaQuery = '@media only screen and (min-width: 426px)'
+
+const StyledComponent = styled.div`
+  background-color: red;
+  ${mediaQuery} {
+    background-color: blue;
+  }
+`
+```
+
+Unfortunately, this syntax is identical to the syntax used to refer to other components and this
+plugin cannot distinguish between the two and will produce broken CSS rules. Since referring to
+other components is more common, the below method of formatting `@media` inline can be
+used as a workaround.
+
+```javascript
+const mediaQuery = 'only screen and (min-width: 426px)';
+
+const StyledComponent = styled.div`
+  background-color: red;
+  @media ${mediaQuery} {
+    background-color: blue;
+  }
+`;
+```
+
 ## Upgrade to version 1.0.0
 
 Note that `rawCssNamespace` was dropped in favor of the single `cssNamespace` option. Additionally, support for an array of selectors was dropped as well. Update any references to `rawCssNamespace` with `cssNamespace`.
