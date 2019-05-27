@@ -124,6 +124,28 @@ pluginTester({
         __dirname,
         './fixtures/styled_component_with_media_query.js'
       )
+    },
+    {
+      title: 'handles case where there is a comment followed by js',
+      fixture: path.join(
+        __dirname,
+        './fixtures/styled_component_with_comment_and_js.js'
+      )
+    },
+    {
+      title:
+        'handles case where there is a comment followed by a value provided by js',
+      fixture: path.join(
+        __dirname,
+        './fixtures/styled_component_with_comment_and_value_in_js.js'
+      )
+    },
+    {
+      title: 'handles case where the semicolon is provided in js',
+      fixture: path.join(
+        __dirname,
+        './fixtures/styled_component_without_trailing_semicolon.js'
+      )
     }
 
     /**

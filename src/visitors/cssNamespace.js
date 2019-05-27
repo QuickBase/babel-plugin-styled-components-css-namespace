@@ -78,6 +78,7 @@ export default (path, state) => {
       // }
       if (
         (rawValueWithoutWhiteSpace === '' ||
+          rawValueWithoutWhiteSpace.endsWith('*/') ||
           rawValueWithoutWhiteSpace.endsWith('{') ||
           rawValueWithoutWhiteSpace.endsWith('}') ||
           rawValueWithoutWhiteSpace.endsWith(';')) &&
@@ -112,9 +113,9 @@ export default (path, state) => {
     })
     .then(value => (formattedCss = value.css))
     .catch(error => {
-      potentialError = `There was a problem adding namespaces to this CSS. Error: ${
-        error.message
-      }\n CSS: ${originalStyleString}`;
+      potentialError = `There was a problem adding namespaces to this CSS in the file ${
+        state.file.opts.filename
+      }. Error: ${error.message}\n CSS: ${originalStyleString}`;
       formattedCss = 'ERROR';
     });
   // Allows us to turn the async promise into synchronous code for the purpose of the plugin

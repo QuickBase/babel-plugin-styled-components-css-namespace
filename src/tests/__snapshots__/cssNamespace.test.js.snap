@@ -407,6 +407,84 @@ export default MyStyledComponent;
 "
 `;
 
+exports[`styled-components-css-namespace handles case where the semicolon is provided in js: handles case where the semicolon is provided in js 1`] = `
+"
+const styled = { div() {} };
+
+// prettier-ignore
+const MyStyledComponent = styled.div\`
+  color: \${() => 'color: blue;'}
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+// prettier-ignore
+const MyStyledComponent = styled.div\`
+&& {
+  color: \${() => 'color: blue;'}
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`styled-components-css-namespace handles case where there is a comment followed by a value provided by js: handles case where there is a comment followed by a value provided by js 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  /* comment */
+  color: \${() => 'blue'};
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+&& {
+  /* comment */
+  color: \${() => 'blue'};
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
+exports[`styled-components-css-namespace handles case where there is a comment followed by js: handles case where there is a comment followed by js 1`] = `
+"
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  /* comment */
+  \${() => 'color: blue;'};
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+&& {
+  /* comment */
+  \${() => 'color: blue;'};
+}
+\`;
+
+export default MyStyledComponent;
+"
+`;
+
 exports[`styled-components-css-namespace namespaces a style block with &&: namespaces a style block with && 1`] = `
 "
 const styled = { input() {} };
