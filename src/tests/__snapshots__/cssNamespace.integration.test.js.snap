@@ -32,7 +32,7 @@ exports[`styled-components output for a style block with interpolated selectors 
 }
 
 #different-wrapper .c2 + .c0,
-#different-wrapper .c0 + .sc-dnqmqq {
+#different-wrapper .c0 + .sc-bZQynM {
   margin-right: 12px;
 }
 
