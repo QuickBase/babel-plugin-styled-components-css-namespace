@@ -19,8 +19,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 && {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
@@ -33,7 +35,6 @@ const MyStyledComponent = styled.div\`
     border: 1px solid black;
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -56,6 +57,7 @@ export default MyStyledComponent;
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = () => {};
+
 styled.div = () => {};
 
 const styledDiv = styled.div\`
@@ -63,13 +65,11 @@ body .specific .rule & {
   width: 100px;
 }
 \`;
-
 const MyStyledComponent = styled(styledDiv)\`
 body .specific .rule & {
   background-color: 'yellow';
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -86,14 +86,15 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 && {
   background-color: 'yellow';
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -116,20 +117,23 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
-const css = { css() {} };
+const styled = {
+  div() {}
 
+};
+const css = {
+  css() {}
+
+};
 const styledCSS = css\`
   width: 100px;
 \`;
-
 const MyStyledComponent = styled.div\`
 .specific & {
   background-color: 'yellow';
   \${styledCSS};
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -155,8 +159,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const mymove = styled.keyframes\`
   0% {
     color: transparent;
@@ -165,13 +171,11 @@ const mymove = styled.keyframes\`
     color: radboats;
   }
 \`;
-
 const MyStyledComponent = styled.div\`
 body .specific .rule & {
   animation: \${mymove} 5s infinite;
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -197,8 +201,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const mymove = styled.keyframes\`
   0% {
     color: transparent;
@@ -207,13 +213,11 @@ const mymove = styled.keyframes\`
     color: radboats;
   }
 \`;
-
 const MyStyledComponent = styled.div\`
 .specific & {
   animation: \${mymove} 5s infinite;
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -261,13 +265,11 @@ export const Clearfix = css\`
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { createGlobalStyle, css, injectGlobal, keyframes } from 'styled-components';
-
 export const getBodyColorStyle = color => createGlobalStyle\`
   body {
     color: \${color};
   }
 \`;
-
 export const injectBodyStyles = styles => {
   injectGlobal\`
     body {
@@ -275,7 +277,6 @@ export const injectBodyStyles = styles => {
     }
   \`;
 };
-
 export const Rotate = keyframes\`
   from {
     transform: rotate(0deg);
@@ -284,7 +285,6 @@ export const Rotate = keyframes\`
     transform: rotate(360deg);
   }
 \`;
-
 export const Clearfix = css\`
   &:after {
     display: table;
@@ -316,8 +316,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 #different-wrapper & {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
@@ -332,7 +334,6 @@ const MyStyledComponent = styled.div\`
     border: 1px solid black;
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -352,8 +353,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 && {
   background-color: red;
@@ -364,7 +367,6 @@ const MyStyledComponent = styled.div\`
 }
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -388,8 +390,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 #different-wrapper & {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
@@ -402,7 +406,6 @@ const MyStyledComponent = styled.div\`
     \${props => props.isDark ? 'color: red' : 'color: white'};
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -420,15 +423,16 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
-// prettier-ignore
+}; // prettier-ignore
+
 const MyStyledComponent = styled.div\`
 && {
   color: \${() => 'color: blue;'}
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -446,15 +450,16 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 && {
   /* comment */
   color: \${() => 'blue'};
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -472,15 +477,16 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 && {
   /* comment */
   \${() => 'color: blue;'};
 }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -497,8 +503,10 @@ export default styled.input\`
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { input() {} };
+const styled = {
+  input() {}
 
+};
 export default styled.input\`
 #different-wrapper && {
     border: \${props => props.borderWidth} solid \${props => props.borderColor};
@@ -526,9 +534,7 @@ export default styled.div\`
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import styled from 'styled-components';
-
 const Child = styled.span;
-
 export default styled.div\`
 #different-wrapper & {
   position: relative;
@@ -562,8 +568,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 body .specific .rule & {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
@@ -576,7 +584,6 @@ body .specific .rule & {
     border: 1px solid black;
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -600,8 +607,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 .moreSpecific & {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
@@ -614,7 +623,6 @@ const MyStyledComponent = styled.div\`
     border: 1px solid black;
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
@@ -638,8 +646,10 @@ export default MyStyledComponent;
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const styled = { div() {} };
+const styled = {
+  div() {}
 
+};
 const MyStyledComponent = styled.div\`
 .specific .verySpecific .extraSpecific & {
   background-color: \${props => props.isDark ? 'red' : 'yellow'};
@@ -652,7 +662,6 @@ const MyStyledComponent = styled.div\`
     border: 1px solid black;
   }
 \`;
-
 export default MyStyledComponent;
 "
 `;
