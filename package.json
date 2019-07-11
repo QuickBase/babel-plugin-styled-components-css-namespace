@@ -1,6 +1,6 @@
 {
   "name": "@quickbaseoss/babel-plugin-styled-components-css-namespace",
-  "version": "1.0.0-rc2",
+  "version": "1.0.0-rc3",
   "description": "A babel plugin to add css namespaces to all styled components.",
   "keywords": [
     "styled-components",
