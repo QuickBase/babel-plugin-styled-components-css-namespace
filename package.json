@@ -143,8 +143,8 @@
     }
   },
   "dependencies": {
+    "@babel/types": "^7.5.0",
     "babel-plugin-styled-components": "1.10.x",
-    "babel-types": "6.26.x",
     "deasync": "0.1.x",
     "postcss": "7.0.x",
     "postcss-nested": "4.1.x",
@@ -156,7 +156,6 @@
     "@babel/core": "7.2.x",
     "@babel/preset-env": "7.3.x",
     "@babel/preset-react": "7.0.x",
-    "babel-core": "^6.26.3",
     "babel-eslint": "10.0.x",
     "babel-jest": "24.1.x",
     "babel-plugin-tester": "6.2.x",
