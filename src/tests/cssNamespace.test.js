@@ -146,6 +146,16 @@ pluginTester({
         __dirname,
         './fixtures/styled_component_without_trailing_semicolon.js'
       )
+    },
+    {
+      title: 'handles re-ordering of template expressions',
+      pluginOptions: {
+        cssNamespace: '.class-wrapper .other-wrapper'
+      },
+      fixture: path.join(
+        __dirname,
+        './fixtures/reordered-template-expressions.js'
+      )
     }
 
     /**

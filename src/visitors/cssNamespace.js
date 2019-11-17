@@ -84,11 +84,11 @@ export default (path, state) => {
           rawValueWithoutWhiteSpace.endsWith(';')) &&
         (!nextQuasi || (nextQuasi && nextQuasi.value.raw.startsWith(';')))
       ) {
-        return `${rawValue}${EXPRESSION}: ${FAKE_VALUE}`;
+        return `${rawValue}${EXPRESSION}-${i}: ${FAKE_VALUE}`;
       }
 
       // The rest of the time we can simply append the expression placeholder to the raw value.
-      return rawValue + EXPRESSION;
+      return `${rawValue}${EXPRESSION}-${i}`;
     })
     .join('');
 
@@ -127,7 +127,11 @@ export default (path, state) => {
   }
 
   // Remove the fakevalue and split on the EXPRESSION so we can replace it with the real expression
-  const splitCss = formattedCss.replace(/:\sfakevalue/g, '').split(EXPRESSION);
+  const expressionRegExp = new RegExp(`${EXPRESSION}-[0-9]+`, 'g');
+  const valueRegExp = new RegExp(`:\\s${FAKE_VALUE}`, 'g');
+  const splitCss = formattedCss
+    .replace(valueRegExp, '')
+    .split(expressionRegExp);
   const values = splitCss.map((value, index) =>
     t.templateElement(
       { raw: value, cooked: value.replace(/\\\\/g, '\\') },
@@ -135,9 +139,16 @@ export default (path, state) => {
     )
   );
 
+  // find the new numeric sequence of the expressions and create a list
+  // of the real expressions in this potentially-modified order
+  const expressionIDs = formattedCss.match(expressionRegExp) || [];
+  const resortedExpressions = expressionIDs.map(
+    match => expressions[parseInt(match.split('-').pop(), 10)]
+  );
+
   const replacementNode = t.taggedTemplateExpression(
     tag,
-    t.templateLiteral(values, expressions)
+    t.templateLiteral(values, resortedExpressions)
   );
   replacementNodes.add(replacementNode);
 
