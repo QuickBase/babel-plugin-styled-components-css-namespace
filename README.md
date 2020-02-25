@@ -13,13 +13,13 @@
 }
 ```
 
-If you are also using [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components), you must place `styled-components-css-namespace` **before** `styled-components`.
+If you are also using [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components), you must place `styled-components-css-namespace` **before** `babel-plugin-styled-components`.
 
 ```json
 "babel": {
   "plugins": [
     "@quickbaseoss/babel-plugin-styled-components-css-namespace",
-    "styled-components"
+    "babel-plugin-styled-components"
   ]
 }
 ```
