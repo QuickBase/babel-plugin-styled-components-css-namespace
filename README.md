@@ -1,5 +1,7 @@
 # @quickbase/babel-plugin-styled-components-css-namespace
 
+[![Travis CI status and link to builds](https://api.travis-ci.org/QuickBase/babel-plugin-styled-components-css-namespace.svg?branch=master)](https://travis-ci.org/github/QuickBase/babel-plugin-styled-components-css-namespace)
+
 ## Getting Started
 
 1.  Add the plugin with `yarn add @quickbaseoss/babel-plugin-styled-components-css-namespace` or `npm install @quickbaseoss/babel-plugin-styled-components-css-namespace`
