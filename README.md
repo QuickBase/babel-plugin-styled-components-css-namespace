@@ -1,4 +1,4 @@
-# @quickbase/babel-plugin-styled-components-css-namespace
+# @quickbaseoss/babel-plugin-styled-components-css-namespace
 
 [![Travis CI status and link to builds](https://api.travis-ci.org/QuickBase/babel-plugin-styled-components-css-namespace.svg?branch=master)](https://travis-ci.org/github/QuickBase/babel-plugin-styled-components-css-namespace)
 
