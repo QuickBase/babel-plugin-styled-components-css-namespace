@@ -81,7 +81,9 @@ export default (path, state) => {
           rawValueWithoutWhiteSpace.endsWith('{') ||
           rawValueWithoutWhiteSpace.endsWith('}') ||
           rawValueWithoutWhiteSpace.endsWith(';')) &&
-        (!nextQuasi || (nextQuasi && nextQuasi.value.raw.startsWith(';')))
+        (!nextQuasi ||
+          (nextQuasi.value.raw.startsWith(';') ||
+            nextQuasi.value.raw.trim() === ''))
       ) {
         return `${rawValue}${EXPRESSION}-${i}: ${FAKE_VALUE}`;
       }
