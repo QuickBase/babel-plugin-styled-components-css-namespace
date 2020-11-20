@@ -156,6 +156,16 @@ pluginTester({
         __dirname,
         './fixtures/reordered-template-expressions.js'
       )
+    },
+    {
+      title: 'adds workspace to simple component with nested css',
+      pluginOptions: {
+        cssNamespace: '.class-wrapper .other-wrapper'
+      },
+      fixture: path.join(
+        __dirname,
+        './fixtures/simple_composed_styled_component.js'
+      )
     }
 
     /**

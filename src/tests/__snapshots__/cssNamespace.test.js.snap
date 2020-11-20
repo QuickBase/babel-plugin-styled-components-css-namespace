@@ -99,6 +99,34 @@ export default MyStyledComponent;
 "
 `;
 
+exports[`styled-components-css-namespace adds workspace to simple component with nested css: adds workspace to simple component with nested css 1`] = `
+"
+const styled = { div() {} };
+
+const padding = 'padding: 2px 2px 2px 2px;';
+
+const MyStyledComponent = styled.div\`
+  \${padding}
+\`;
+
+export default MyStyledComponent;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  div() {}
+
+};
+const padding = 'padding: 2px 2px 2px 2px;';
+const MyStyledComponent = styled.div\`
+.class-wrapper .other-wrapper & {
+  \${padding}
+}
+\`;
+export default MyStyledComponent;
+"
+`;
+
 exports[`styled-components-css-namespace does not add extra selectors to child helper styles: does not add extra selectors to child helper styles 1`] = `
 "
 const styled = { div() {} };
