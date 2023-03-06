@@ -1,12 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`styled-components-css-namespace adds namespace to complex styled-component: adds namespace to complex styled-component 1`] = `
-"
+exports[`styled-components-css-namespace 1. adds namespace to simple styled-component: 1. adds namespace to simple styled-component 1`] = `
+
 const styled = { div() {} };
 
 const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
+  background-color: 'yellow';
+\`;
+
+export default MyStyledComponent;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  div() {},
+};
+const MyStyledComponent = styled.div\`
+  background-color: "yellow";
+\`;
+export default MyStyledComponent;
+
+`;
+
+exports[`styled-components-css-namespace 2. adds namespace to complex styled-component: 2. adds namespace to complex styled-component 1`] = `
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? 'red' : 'yellow')};
+  color: \${(props) => (props.isDark ? 'white' : 'navy')};
   font-size: 30px;
   padding: 20px;
 
@@ -17,90 +40,102 @@ const MyStyledComponent = styled.div\`
 
 export default MyStyledComponent;
 
+
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const MyStyledComponent = styled.div\`
-&& {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
+  background-color: \${(props) => (props.isDark ? "red" : "yellow")};
+  color: \${(props) => (props.isDark ? "white" : "navy")};
   font-size: 30px;
   padding: 20px;
-}
 
-  && {
+  & {
     border: 1px solid black;
   }
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace adds namespace to extended styled-components: adds namespace to extended styled-components 1`] = `
-"
-const styled = () => {};
-styled.div = () => {};
+exports[`styled-components-css-namespace 3. uses a namespace specified in the options: 3. uses a namespace specified in the options 1`] = `
 
-const styledDiv = styled.div\`
-  width: 100px;
-\`;
-
-const MyStyledComponent = styled(styledDiv)\`
-  background-color: 'yellow';
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = () => {};
-
-styled.div = () => {};
-
-const styledDiv = styled.div\`
-body .specific .rule & {
-  width: 100px;
-}
-\`;
-const MyStyledComponent = styled(styledDiv)\`
-body .specific .rule & {
-  background-color: 'yellow';
-}
-\`;
-export default MyStyledComponent;
-"
-`;
-
-exports[`styled-components-css-namespace adds namespace to simple styled-component: adds namespace to simple styled-component 1`] = `
-"
 const styled = { div() {} };
 
 const MyStyledComponent = styled.div\`
-  background-color: 'yellow';
+  background-color: \${(props) => (props.isDark ? 'red' : 'yellow')};
+  color: \${(props) => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
 \`;
 
 export default MyStyledComponent;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const MyStyledComponent = styled.div\`
-&& {
-  background-color: 'yellow';
-}
+  background-color: \${(props) => (props.isDark ? "red" : "yellow")};
+  color: \${(props) => (props.isDark ? "white" : "navy")};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace does not add extra selectors to child helper styles: does not add extra selectors to child helper styles 1`] = `
-"
+exports[`styled-components-css-namespace 4. uses an array of namespaces specified in the options: 4. uses an array of namespaces specified in the options 1`] = `
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? 'red' : 'yellow')};
+  color: \${(props) => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+\`;
+
+export default MyStyledComponent;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  div() {},
+};
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? "red" : "yellow")};
+  color: \${(props) => (props.isDark ? "white" : "navy")};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+\`;
+export default MyStyledComponent;
+
+`;
+
+exports[`styled-components-css-namespace 6. does not add extra selectors to child helper styles: 6. does not add extra selectors to child helper styles 1`] = `
+
 const styled = { div() {} };
 const css = { css() {} };
 
@@ -115,38 +150,35 @@ const MyStyledComponent = styled.div\`
 
 export default MyStyledComponent;
 
+
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const css = {
-  css() {}
-
+  css() {},
 };
 const styledCSS = css\`
   width: 100px;
 \`;
 const MyStyledComponent = styled.div\`
-.specific & {
-  background-color: 'yellow';
+  background-color: "yellow";
   \${styledCSS};
-}
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace does not add namespace to keyframes as part of the simple raw wrapper: does not add namespace to keyframes as part of the simple raw wrapper 1`] = `
-"
+exports[`styled-components-css-namespace 7. does not add namespace to keyframes: 7. does not add namespace to keyframes 1`] = `
+
 const styled = { div() {} };
 
 const mymove = styled.keyframes\`
-  0% {
+  \\ 0% {
     color: transparent;
   }
-  100% {
+  \\ 100% {
     color: radboats;
   }
 \`;
@@ -156,88 +188,213 @@ const MyStyledComponent = styled.div\`
 \`;
 
 export default MyStyledComponent;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const mymove = styled.keyframes\`
-  0% {
+  \\ 0% {
     color: transparent;
   }
-  100% {
+  \\ 100% {
     color: radboats;
   }
 \`;
 const MyStyledComponent = styled.div\`
-body .specific .rule & {
   animation: \${mymove} 5s infinite;
-}
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace does not add namespace to keyframes: does not add namespace to keyframes 1`] = `
-"
-const styled = { div() {} };
+exports[`styled-components-css-namespace 8. adds namespace to extended styled-components: 8. adds namespace to extended styled-components 1`] = `
 
-const mymove = styled.keyframes\`
-  0% {
-    color: transparent;
-  }
-  100% {
-    color: radboats;
-  }
+const styled = () => {};
+styled.div = () => {};
+
+const styledDiv = styled.div\`
+  width: 100px;
 \`;
 
-const MyStyledComponent = styled.div\`
-  animation: \${mymove} 5s infinite;
+const MyStyledComponent = styled(styledDiv)\`
+  background-color: 'yellow';
 \`;
 
 export default MyStyledComponent;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = () => {};
+styled.div = () => {};
+const styledDiv = styled.div\`
+  width: 100px;
+\`;
+const MyStyledComponent = styled(styledDiv)\`
+  background-color: "yellow";
+\`;
+export default MyStyledComponent;
+
+`;
+
+exports[`styled-components-css-namespace 9. uses a namespace specified in the options as simple wrapper raw wrapper: 9. uses a namespace specified in the options as simple wrapper raw wrapper 1`] = `
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? 'red' : 'yellow')};
+  color: \${(props) => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+\`;
+
+export default MyStyledComponent;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? "red" : "yellow")};
+  color: \${(props) => (props.isDark ? "white" : "navy")};
+  font-size: 30px;
+  padding: 20px;
+
+  & {
+    border: 1px solid black;
+  }
+\`;
+export default MyStyledComponent;
+
+`;
+
+exports[`styled-components-css-namespace 10. does not add namespace to keyframes as part of the simple raw wrapper: 10. does not add namespace to keyframes as part of the simple raw wrapper 1`] = `
+
+const styled = { div() {} };
+
 const mymove = styled.keyframes\`
-  0% {
+  \\ 0% {
     color: transparent;
   }
-  100% {
+  \\ 100% {
+    color: radboats;
+  }
+\`;
+
+const MyStyledComponent = styled.div\`
+  animation: \${mymove} 5s infinite;
+\`;
+
+export default MyStyledComponent;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  div() {},
+};
+const mymove = styled.keyframes\`
+  \\ 0% {
+    color: transparent;
+  }
+  \\ 100% {
     color: radboats;
   }
 \`;
 const MyStyledComponent = styled.div\`
-.specific & {
   animation: \${mymove} 5s infinite;
-}
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace does not namespace style blocks in helpers: does not namespace style blocks in helpers 1`] = `
-"
+exports[`styled-components-css-namespace 11. namespaces a style block with &&: 11. namespaces a style block with && 1`] = `
+
+const styled = { input() {} };
+
+export default styled.input\`
+  && {
+    border: \${(props) => props.borderWidth} solid
+      \${(props) => props.borderColor};
+  }
+\`;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  input() {},
+};
+export default styled.input\`
+  && {
+    border: \${(props) => props.borderWidth} solid
+      \${(props) => props.borderColor};
+  }
+\`;
+
+`;
+
+exports[`styled-components-css-namespace 12. namespaces a style block with interpolated selectors: 12. namespaces a style block with interpolated selectors 1`] = `
+
+import styled from 'styled-components';
+
+const Child = styled.span;
+
+export default styled.div\`
+  position: relative;
+  \${Child} {
+    \${(props) => props.childStyles};
+  }
+  \${Child} + &, & + \${Child} {
+    margin-right: \${(props) => props.spaceBetween};
+  }
+\`;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import styled from "styled-components";
+const Child = styled.span;
+export default styled.div\`
+  #different-wrapper & {
+    position: relative;
+  }
+  #different-wrapper & #different-wrapper \${Child} {
+    \${(props) => props.childStyles};
+  }
+  #different-wrapper \${Child} + #different-wrapper &,
+  #different-wrapper #different-wrapper & + \${Child} {
+    margin-right: \${(props) => props.spaceBetween};
+  }
+\`;
+
+`;
+
+exports[`styled-components-css-namespace 13. does not namespace style blocks in helpers: 13. does not namespace style blocks in helpers 1`] = `
+
 import {
   createGlobalStyle,
   css,
   injectGlobal,
-  keyframes
+  keyframes,
 } from 'styled-components';
 
-export const getBodyColorStyle = color => createGlobalStyle\`
+export const getBodyColorStyle = (color) => createGlobalStyle\`
   body {
     color: \${color};
   }
 \`;
 
-export const injectBodyStyles = styles => {
+export const injectBodyStyles = (styles) => {
   injectGlobal\`
     body {
       \${styles};
@@ -261,16 +418,22 @@ export const Clearfix = css\`
     clear: 'both';
   }
 \`;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createGlobalStyle, css, injectGlobal, keyframes } from 'styled-components';
-export const getBodyColorStyle = color => createGlobalStyle\`
+import {
+  createGlobalStyle,
+  css,
+  injectGlobal,
+  keyframes,
+} from "styled-components";
+export const getBodyColorStyle = (color) => createGlobalStyle\`
   body {
     color: \${color};
   }
 \`;
-export const injectBodyStyles = styles => {
+export const injectBodyStyles = (styles) => {
   injectGlobal\`
     body {
       \${styles};
@@ -288,20 +451,20 @@ export const Rotate = keyframes\`
 export const Clearfix = css\`
   &:after {
     display: table;
-    content: '';
-    clear: 'both';
+    content: "";
+    clear: "both";
   }
 \`;
-"
+
 `;
 
-exports[`styled-components-css-namespace handles case where styled component ends with expression: handles case where styled component ends with expression 1`] = `
-"
+exports[`styled-components-css-namespace 14. handles case where styled component ends with expression: 14. handles case where styled component ends with expression 1`] = `
+
 const styled = { div() {} };
 
 const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
+  background-color: \${(props) => (props.isDark ? 'red' : 'yellow')};
+  color: \${(props) => (props.isDark ? 'white' : 'navy')};
   font-size: 30px;
   padding: 20px;
 
@@ -309,37 +472,72 @@ const MyStyledComponent = styled.div\`
     border: 1px solid black;
   }
 
-  \${props => (props.isDark ? 'color: red' : 'color: white')};
+  \${(props) => (props.isDark ? 'color: red' : 'color: white')};
 \`;
 
 export default MyStyledComponent;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const MyStyledComponent = styled.div\`
-#different-wrapper & {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
+  background-color: \${(props) => (props.isDark ? "red" : "yellow")};
+  color: \${(props) => (props.isDark ? "white" : "navy")};
   font-size: 30px;
   padding: 20px;
 
-  \${props => props.isDark ? 'color: red' : 'color: white'};
-}
-
-  #different-wrapper & {
+  & {
     border: 1px solid black;
+  }
+
+  \${(props) => (props.isDark ? "color: red" : "color: white")};
+\`;
+export default MyStyledComponent;
+
+`;
+
+exports[`styled-components-css-namespace 15. handles case where styled component has only an expression in a css block: 15. handles case where styled component has only an expression in a css block 1`] = `
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? 'red' : 'yellow')};
+  color: \${(props) => (props.isDark ? 'white' : 'navy')};
+  font-size: 30px;
+  padding: 20px;
+
+  &:hover {
+    \${(props) => (props.isDark ? 'color: red' : 'color: white')};
+  }
+\`;
+
+export default MyStyledComponent;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  div() {},
+};
+const MyStyledComponent = styled.div\`
+  background-color: \${(props) => (props.isDark ? "red" : "yellow")};
+  color: \${(props) => (props.isDark ? "white" : "navy")};
+  font-size: 30px;
+  padding: 20px;
+
+  &:hover {
+    \${(props) => (props.isDark ? "color: red" : "color: white")};
   }
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace handles case where styled component has a media query: handles case where styled component has a media query 1`] = `
-"
+exports[`styled-components-css-namespace 16. handles case where styled component has a media query: 16. handles case where styled component has a media query 1`] = `
+
 const styled = { div() {} };
 
 const MyStyledComponent = styled.div\`
@@ -351,67 +549,74 @@ const MyStyledComponent = styled.div\`
 
 export default MyStyledComponent;
 
+
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const MyStyledComponent = styled.div\`
-&& {
   background-color: red;
-}
   @media only screen and (min-width: 426px) {
-&& {
-    background-color: blue
-}
+    background-color: blue;
   }
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace handles case where styled component has only an expression in a css block: handles case where styled component has only an expression in a css block 1`] = `
-"
+exports[`styled-components-css-namespace 17. handles case where there is a comment followed by js: 17. handles case where there is a comment followed by js 1`] = `
+
 const styled = { div() {} };
 
 const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
-  font-size: 30px;
-  padding: 20px;
-
-  &:hover {
-    \${props => (props.isDark ? 'color: red' : 'color: white')};
-  }
+  /* comment */
+  \${() => 'color: blue;'}
 \`;
 
 export default MyStyledComponent;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
-
+  div() {},
 };
 const MyStyledComponent = styled.div\`
-#different-wrapper & {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
-  font-size: 30px;
-  padding: 20px;
-}
-
-  #different-wrapper &:hover {
-    \${props => props.isDark ? 'color: red' : 'color: white'};
-  }
+  /* comment */
+  \${() => "color: blue;"}
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace handles case where the semicolon is provided in js: handles case where the semicolon is provided in js 1`] = `
-"
+exports[`styled-components-css-namespace 18. handles case where there is a comment followed by a value provided by js: 18. handles case where there is a comment followed by a value provided by js 1`] = `
+
+const styled = { div() {} };
+
+const MyStyledComponent = styled.div\`
+  /* comment */
+  color: \${() => 'blue'};
+\`;
+
+export default MyStyledComponent;
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const styled = {
+  div() {},
+};
+const MyStyledComponent = styled.div\`
+  /* comment */
+  color: \${() => "blue"};
+\`;
+export default MyStyledComponent;
+
+`;
+
+exports[`styled-components-css-namespace 19. handles case where the semicolon is provided in js: 19. handles case where the semicolon is provided in js 1`] = `
+
 const styled = { div() {} };
 
 // prettier-ignore
@@ -421,78 +626,23 @@ const MyStyledComponent = styled.div\`
 
 export default MyStyledComponent;
 
+
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const styled = {
-  div() {}
+  div() {},
+};
 
-}; // prettier-ignore
-
+// prettier-ignore
 const MyStyledComponent = styled.div\`
-&& {
   color: \${() => 'color: blue;'}
-}
 \`;
 export default MyStyledComponent;
-"
+
 `;
 
-exports[`styled-components-css-namespace handles case where there is a comment followed by a value provided by js: handles case where there is a comment followed by a value provided by js 1`] = `
-"
-const styled = { div() {} };
+exports[`styled-components-css-namespace 20. handles re-ordering of template expressions: 20. handles re-ordering of template expressions 1`] = `
 
-const MyStyledComponent = styled.div\`
-  /* comment */
-  color: \${() => 'blue'};
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = {
-  div() {}
-
-};
-const MyStyledComponent = styled.div\`
-&& {
-  /* comment */
-  color: \${() => 'blue'};
-}
-\`;
-export default MyStyledComponent;
-"
-`;
-
-exports[`styled-components-css-namespace handles case where there is a comment followed by js: handles case where there is a comment followed by js 1`] = `
-"
-const styled = { div() {} };
-
-const MyStyledComponent = styled.div\`
-  /* comment */
-  \${() => 'color: blue;'};
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = {
-  div() {}
-
-};
-const MyStyledComponent = styled.div\`
-&& {
-  /* comment */
-  \${() => 'color: blue;'};
-}
-\`;
-export default MyStyledComponent;
-"
-`;
-
-exports[`styled-components-css-namespace handles re-ordering of template expressions: handles re-ordering of template expressions 1`] = `
-"
 import styled from 'styled-components';
 
 /*
@@ -506,27 +656,29 @@ import styled from 'styled-components';
  */
 
 export default styled.div\`
-  background: \${props => props.background};
-  border: 1px solid \${props => props.borderColor};
+  background: \${(props) => props.background};
+  border: 1px solid \${(props) => props.borderColor};
   width: 100%;
 
-  \${props => props.styles};
+  \${(props) => props.styles};
 
   &:hover {
-    border-color: \${props => props.hoverBorder};
+    border-color: \${(props) => props.hoverBorder};
   }
 
   &:active {
-    border-color: \${props => props.activeBorder};
+    border-color: \${(props) => props.activeBorder};
     \${props.activeStyles};
   }
 
-  \${props => props.moreStyles};
+  \${(props) => props.moreStyles};
 \`;
+
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import styled from 'styled-components';
+import styled from "styled-components";
+
 /*
   The PostCSS flattening pulls the &:hover and &:active out of the
   main style block, placing it _after_ the main block. Therefore
@@ -538,199 +690,26 @@ import styled from 'styled-components';
  */
 
 export default styled.div\`
-.class-wrapper .other-wrapper & {
-  background: \${props => props.background};
-  border: 1px solid \${props => props.borderColor};
-  width: 100%;
+  .class-wrapper .other-wrapper & {
+    background: \${(props) => props.background};
+    border: 1px solid \${(props) => props.borderColor};
+    width: 100%;
 
-  \${props => props.styles};
-
-  \${props => props.moreStyles};
-}
-
-  .class-wrapper .other-wrapper &:hover {
-    border-color: \${props => props.hoverBorder};
+    \${(props) => props.styles};
   }
 
-  .class-wrapper .other-wrapper &:active {
-    border-color: \${props => props.activeBorder};
+  .class-wrapper .other-wrapper .class-wrapper .other-wrapper &:hover {
+    border-color: \${(props) => props.hoverBorder};
+  }
+
+  .class-wrapper .other-wrapper .class-wrapper .other-wrapper &:active {
+    border-color: \${(props) => props.activeBorder};
     \${props.activeStyles};
   }
-\`;
-"
-`;
 
-exports[`styled-components-css-namespace namespaces a style block with &&: namespaces a style block with && 1`] = `
-"
-const styled = { input() {} };
-
-export default styled.input\`
-  && {
-    border: \${props => props.borderWidth} solid \${props => props.borderColor};
+  .class-wrapper .other-wrapper & {
+    \${(props) => props.moreStyles};
   }
 \`;
 
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = {
-  input() {}
-
-};
-export default styled.input\`
-#different-wrapper && {
-    border: \${props => props.borderWidth} solid \${props => props.borderColor};
-  }
-\`;
-"
-`;
-
-exports[`styled-components-css-namespace namespaces a style block with interpolated selectors: namespaces a style block with interpolated selectors 1`] = `
-"
-import styled from 'styled-components';
-
-const Child = styled.span;
-
-export default styled.div\`
-  position: relative;
-  \${Child} {
-    \${props => props.childStyles};
-  }
-  \${Child} + &, & + \${Child} {
-    margin-right: \${props => props.spaceBetween};
-  }
-\`;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-import styled from 'styled-components';
-const Child = styled.span;
-export default styled.div\`
-#different-wrapper & {
-  position: relative;
-}
-  #different-wrapper & \${Child} {
-    \${props => props.childStyles};
-  }
-  #different-wrapper \${Child} + &, #different-wrapper & + \${Child} {
-    margin-right: \${props => props.spaceBetween};
-  }
-\`;
-"
-`;
-
-exports[`styled-components-css-namespace uses a namespace specified in the options as simple wrapper raw wrapper: uses a namespace specified in the options as simple wrapper raw wrapper 1`] = `
-"
-const styled = { div() {} };
-
-const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
-  font-size: 30px;
-  padding: 20px;
-
-  & {
-    border: 1px solid black;
-  }
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = {
-  div() {}
-
-};
-const MyStyledComponent = styled.div\`
-body .specific .rule & {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
-  font-size: 30px;
-  padding: 20px;
-}
-
-  body .specific .rule & {
-    border: 1px solid black;
-  }
-\`;
-export default MyStyledComponent;
-"
-`;
-
-exports[`styled-components-css-namespace uses a namespace specified in the options: uses a namespace specified in the options 1`] = `
-"
-const styled = { div() {} };
-
-const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
-  font-size: 30px;
-  padding: 20px;
-
-  & {
-    border: 1px solid black;
-  }
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = {
-  div() {}
-
-};
-const MyStyledComponent = styled.div\`
-.moreSpecific & {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
-  font-size: 30px;
-  padding: 20px;
-}
-
-  .moreSpecific & {
-    border: 1px solid black;
-  }
-\`;
-export default MyStyledComponent;
-"
-`;
-
-exports[`styled-components-css-namespace uses an array of namespaces specified in the options: uses an array of namespaces specified in the options 1`] = `
-"
-const styled = { div() {} };
-
-const MyStyledComponent = styled.div\`
-  background-color: \${props => (props.isDark ? 'red' : 'yellow')};
-  color: \${props => (props.isDark ? 'white' : 'navy')};
-  font-size: 30px;
-  padding: 20px;
-
-  & {
-    border: 1px solid black;
-  }
-\`;
-
-export default MyStyledComponent;
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const styled = {
-  div() {}
-
-};
-const MyStyledComponent = styled.div\`
-.specific .verySpecific .extraSpecific & {
-  background-color: \${props => props.isDark ? 'red' : 'yellow'};
-  color: \${props => props.isDark ? 'white' : 'navy'};
-  font-size: 30px;
-  padding: 20px;
-}
-
-  .specific .verySpecific .extraSpecific & {
-    border: 1px solid black;
-  }
-\`;
-export default MyStyledComponent;
-"
 `;

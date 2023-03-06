@@ -44,8 +44,10 @@
     "prepare": "yarn run clean && yarn run build",
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",
-    "lint:js": "yarn run lint:eslint -- . ",
-    "lint:eslint": "eslint --fix --ignore-path .eslintignore"
+    "lint:ci": "yarn run lint:eslint -- . ",
+    "lint:js": "yarn run lint:eslint:fix -- . ",
+    "lint:eslint": "eslint --ignore-path .eslintignore",
+    "lint:eslint:fix": "eslint --fix --ignore-path .eslintignore"
   },
   "husky": {
     "hooks": {
@@ -72,17 +74,6 @@
       "@babel/preset-react"
     ]
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/*.(spec|test).js"
-    ],
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    }
-  },
   "dependencies": {
     "@babel/types": "^7.21.2",
     "babel-plugin-styled-components": "^2.0.7",
@@ -103,8 +94,9 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
-    "husky": "8.0.x",
-    "jest": "24.8.x",
+    "husky": "^8.0.3",
+    "jest": "^29.4.3",
+    "jest-environment-jsdom": "^29.4.3",
     "jest-styled-components": "6.3.x",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
