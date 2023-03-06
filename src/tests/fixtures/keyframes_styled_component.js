@@ -1,10 +1,10 @@
 const styled = { div() {} };
 
 const mymove = styled.keyframes`
-  0% {
+  \ 0% {
     color: transparent;
   }
-  100% {
+  \ 100% {
     color: radboats;
   }
 `;

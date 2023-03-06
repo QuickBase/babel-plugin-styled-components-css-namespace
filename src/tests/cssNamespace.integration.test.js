@@ -6,7 +6,7 @@ import 'jest-styled-components';
 
 const evalFixture = (filename, cssNamespace = '#different-wrapper') => {
   const { code } = transformFileSync(filename, {
-    plugins: [[path.join(__dirname, '../index.js'), { cssNamespace }]]
+    plugins: [[path.join(__dirname, '../index.js'), { cssNamespace }]],
   });
 
   if (code == null) throw new Error(`Fixture not found: ${filename}`);
