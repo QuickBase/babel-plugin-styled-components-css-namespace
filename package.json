@@ -44,8 +44,10 @@
     "prepare": "yarn run clean && yarn run build",
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",
-    "lint:js": "yarn run lint:eslint -- . ",
-    "lint:eslint": "eslint --fix --ignore-path .eslintignore"
+    "lint:ci": "yarn run lint:eslint -- . ",
+    "lint:js": "yarn run lint:eslint:fix -- . ",
+    "lint:eslint": "eslint --ignore-path .eslintignore",
+    "lint:eslint:fix": "eslint --fix --ignore-path .eslintignore"
   },
   "husky": {
     "hooks": {
