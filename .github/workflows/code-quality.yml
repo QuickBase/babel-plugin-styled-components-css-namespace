@@ -57,3 +57,9 @@ jobs:
       - name: Unit Tests
         if: ${{matrix.test-type == 'unit'}}
         run: yarn test
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: ${{matrix.test-type == 'unit' && always() }}
+        with:
+          files: "**/junit.xml"
