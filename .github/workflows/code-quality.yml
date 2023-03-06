@@ -1,0 +1,59 @@
+name: Code Quality
+on:
+  push:
+    branches: [master, main, dev]
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+          cache: yarn
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: yarn install --ignore-scripts --frozen-lockfile
+
+      - name: Linting
+        run: yarn lint:ci
+  tests:
+    name: Tests
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test-type: ["unit"]
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+          cache: yarn
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: yarn install --ignore-scripts --frozen-lockfile
+
+      - name: Unit Tests
+        if: ${{matrix.test-type == 'unit'}}
+        run: yarn test
