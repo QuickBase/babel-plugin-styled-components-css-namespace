@@ -27,7 +27,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: yarn install --ignore-scripts --frozen-lockfile
+        run: yarn install --ignore-scripts
 
       - name: Linting
         run: yarn lint:ci
@@ -52,7 +52,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: yarn install --ignore-scripts --frozen-lockfile
+        run: yarn install --ignore-scripts
 
       - name: Unit Tests
         if: ${{matrix.test-type == 'unit'}}
