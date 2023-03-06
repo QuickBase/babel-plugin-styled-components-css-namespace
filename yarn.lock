@@ -1864,9 +1864,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quickbaseoss/babel-plugin-styled-components-css-namespace@workspace:.":
+"@optimumfuturist/babel-plugin-styled-components-css-namespace@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@quickbaseoss/babel-plugin-styled-components-css-namespace@workspace:."
+  resolution: "@optimumfuturist/babel-plugin-styled-components-css-namespace@workspace:."
   dependencies:
     "@babel/cli": ^7.21.0
     "@babel/core": ^7.21.0
