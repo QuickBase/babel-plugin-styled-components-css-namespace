@@ -11,20 +11,20 @@ import styled from 'styled-components';
  */
 
 export default styled.div`
-  background: ${props => props.background};
-  border: 1px solid ${props => props.borderColor};
+  background: ${(props) => props.background};
+  border: 1px solid ${(props) => props.borderColor};
   width: 100%;
 
-  ${props => props.styles};
+  ${(props) => props.styles};
 
   &:hover {
-    border-color: ${props => props.hoverBorder};
+    border-color: ${(props) => props.hoverBorder};
   }
 
   &:active {
-    border-color: ${props => props.activeBorder};
+    border-color: ${(props) => props.activeBorder};
     ${props.activeStyles};
   }
 
-  ${props => props.moreStyles};
+  ${(props) => props.moreStyles};
 `;
