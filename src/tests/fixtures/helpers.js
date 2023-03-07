@@ -2,16 +2,16 @@ import {
   createGlobalStyle,
   css,
   injectGlobal,
-  keyframes
+  keyframes,
 } from 'styled-components';
 
-export const getBodyColorStyle = color => createGlobalStyle`
+export const getBodyColorStyle = (color) => createGlobalStyle`
   body {
     color: ${color};
   }
 `;
 
-export const injectBodyStyles = styles => {
+export const injectBodyStyles = (styles) => {
   injectGlobal`
     body {
       ${styles};

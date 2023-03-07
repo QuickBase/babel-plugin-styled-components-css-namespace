@@ -5,7 +5,9 @@
 build
 lib
 node_modules
+.yarn
 .env
+coverage
 
 lerna-debug.log
 npm-debug.*

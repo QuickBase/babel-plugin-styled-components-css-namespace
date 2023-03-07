@@ -5,9 +5,9 @@ const Child = styled.span;
 export default styled.div`
   position: relative;
   ${Child} {
-    ${props => props.childStyles};
+    ${(props) => props.childStyles};
   }
   ${Child} + &, & + ${Child} {
-    margin-right: ${props => props.spaceBetween};
+    margin-right: ${(props) => props.spaceBetween};
   }
 `;

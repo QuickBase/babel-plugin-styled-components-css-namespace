@@ -1,6 +1,6 @@
 {
   "name": "@quickbaseoss/babel-plugin-styled-components-css-namespace",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A babel plugin to add css namespaces to all styled components.",
   "keywords": [
     "styled-components",
@@ -20,7 +20,7 @@
     "url": "https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/issues"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14.0.0"
   },
   "main": "lib/index.js",
   "files": [
@@ -35,7 +35,6 @@
     "Zach Hardesty <hello@zachhardesty.com> (https://zachhardesty.com)"
   ],
   "license": "MIT",
-  "private": false,
   "scripts": {
     "clean": "rimraf lib",
     "build": "babel src -d lib --ignore src/tests,src/vendor",
@@ -45,8 +44,10 @@
     "prepare": "yarn run clean && yarn run build",
     "precommit": "lint-staged",
     "lint": "yarn run lint:js",
-    "lint:js": "yarn run lint:eslint -- . ",
-    "lint:eslint": "eslint --ignore-path .eslintignore"
+    "lint:ci": "yarn run lint:eslint -- . ",
+    "lint:js": "yarn run lint:eslint:fix -- . ",
+    "lint:eslint": "eslint --ignore-path .eslintignore",
+    "lint:eslint:fix": "eslint --fix --ignore-path .eslintignore"
   },
   "husky": {
     "hooks": {
@@ -73,107 +74,36 @@
       "@babel/preset-react"
     ]
   },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "extends": [
-      "prettier",
-      "plugin:react/recommended"
-    ],
-    "env": {
-      "browser": false,
-      "node": true,
-      "jest": true,
-      "es6": true
-    },
-    "plugins": [
-      "prettier",
-      "react"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true
-        }
-      ],
-      "arrow-body-style": [
-        2,
-        "as-needed"
-      ],
-      "comma-dangle": [
-        2,
-        "never"
-      ],
-      "indent": [
-        0,
-        2,
-        {
-          "SwitchCase": 1
-        }
-      ],
-      "max-len": 0,
-      "newline-per-chained-call": 0,
-      "no-confusing-arrow": 0,
-      "no-console": 1,
-      "no-use-before-define": 0,
-      "prefer-template": 2,
-      "class-methods-use-this": 0,
-      "require-yield": 0,
-      "quotes": [
-        2,
-        "single",
-        {
-          "avoidEscape": true,
-          "allowTemplateLiterals": true
-        }
-      ],
-      "no-unused-vars": 2
-    }
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/*.(spec|test).js"
-    ],
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    }
-  },
   "dependencies": {
-    "@babel/types": "^7.5.0",
-    "babel-plugin-styled-components": "1.10.x",
-    "postcss": "7.0.x",
-    "postcss-nested": "4.1.x",
-    "postcss-parent-selector": "1.0.x",
-    "postcss-safe-parser": "4.0.x"
+    "@babel/types": "^7.21.2",
+    "babel-plugin-styled-components": "^2.0.7",
+    "postcss": "^8.4.21",
+    "postcss-nested": "^6.0.1",
+    "postcss-parent-selector": "^1.0.0",
+    "postcss-safe-parser": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.2.x",
-    "@babel/core": "7.2.x",
-    "@babel/preset-env": "7.3.x",
-    "@babel/preset-react": "7.0.x",
-    "babel-eslint": "10.0.x",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
     "babel-jest": "24.1.x",
-    "babel-plugin-tester": "6.2.x",
-    "eslint": "5.13.x",
-    "eslint-config-prettier": "4.3.x",
-    "eslint-plugin-prettier": "3.1.x",
-    "eslint-plugin-react": "7.12.x",
-    "husky": "1.3.x",
-    "jest": "24.8.x",
+    "babel-plugin-tester": "^11.0.4",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "jest": "^29.4.3",
+    "jest-environment-jsdom": "^29.4.3",
     "jest-styled-components": "6.3.x",
-    "lint-staged": "8.1.x",
-    "prettier": "1.17.x",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
     "react": "16.8.x",
     "react-dom": "16.8.x",
     "react-test-renderer": "16.8.x",
-    "rimraf": "2.6.x",
+    "rimraf": "^4.3.0",
     "styled-components": "4.2.x"
   }
 }
