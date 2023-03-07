@@ -1,6 +1,6 @@
 {
-  "name": "@optimumfuturist/babel-plugin-styled-components-css-namespace",
-  "version": "2.0.1",
+  "name": "@quickbaseoss/babel-plugin-styled-components-css-namespace",
+  "version": "2.0.0",
   "description": "A babel plugin to add css namespaces to all styled components.",
   "keywords": [
     "styled-components",
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/absqueued/babel-plugin-styled-components-css-namespace"
+    "url": "https://github.com/QuickBase/babel-plugin-styled-components-css-namespace"
   },
   "bugs": {
-    "url": "https://github.com/absqueued/babel-plugin-styled-components-css-namespace/issues"
+    "url": "https://github.com/QuickBase/babel-plugin-styled-components-css-namespace/issues"
   },
   "engines": {
     "node": ">=14.0.0"

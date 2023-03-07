@@ -1,19 +1,16 @@
-# @optimumfuturist/babel-plugin-styled-components-css-namespace
-⚠️ ℹ️ : Releasing new npm package because the old org/package hasn't been updated in a while.
+# @quickbaseoss/babel-plugin-styled-components-css-namespace
 
-This fork contains new deps, and CVE patches as per dependabot
-
-## @optimumfuturist/babel-plugin-styled-components-css-namespace
+[![Travis CI status and link to builds](https://api.travis-ci.org/QuickBase/babel-plugin-styled-components-css-namespace.svg?branch=master)](https://travis-ci.org/github/QuickBase/babel-plugin-styled-components-css-namespace)
 
 ## Getting Started
 
-1.  Add the plugin with `yarn add @optimumfuturist/babel-plugin-styled-components-css-namespace` or `npm install @optimumfuturist/babel-plugin-styled-components-css-namespace`
+1.  Add the plugin with `yarn add @quickbaseoss/babel-plugin-styled-components-css-namespace` or `npm install @quickbaseoss/babel-plugin-styled-components-css-namespace`
 1.  Include the plugin in your babel configuration.
 
 ```json
 "babel": {
   "plugins": [
-    "@optimumfuturist/babel-plugin-styled-components-css-namespace"
+    "@quickbaseoss/babel-plugin-styled-components-css-namespace"
   ]
 }
 ```
@@ -23,7 +20,7 @@ If you are also using [babel-plugin-styled-components](https://github.com/styled
 ```json
 "babel": {
   "plugins": [
-    "@optimumfuturist/babel-plugin-styled-components-css-namespace",
+    "@quickbaseoss/babel-plugin-styled-components-css-namespace",
     "babel-plugin-styled-components"
   ]
 }
@@ -52,7 +49,7 @@ To increase the specificity that this plugin adds, you can leverage the [recomme
 {
   "plugins": [
     [
-      "@optimumfuturist/babel-plugin-styled-components-css-namespace",
+      "@quickbaseoss/babel-plugin-styled-components-css-namespace",
       {"cssNamespace": "&&&"}
     ],
     "babel-plugin-styled-components"
@@ -74,7 +71,7 @@ You can provide a `cssNamespace` to use instead of duplicating the class name. R
 ```json
 "babel": {
   "plugins": [
-    ["@optimumfuturist/babel-plugin-styled-components-css-namespace", {"cssNamespace": ".specific .moreSpecific .reallySpecific"}],
+    ["@quickbaseoss/babel-plugin-styled-components-css-namespace", {"cssNamespace": ".specific .moreSpecific .reallySpecific"}],
     "styled-components"
   ]
 }
