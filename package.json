@@ -151,7 +151,7 @@
     "postcss": "8.4.31",
     "postcss-nested": "6.0.1",
     "postcss-parent-selector": "1.0.x",
-    "postcss-safe-parser": "7.0.x"
+    "postcss-safe-parser": "7.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.2.x",
