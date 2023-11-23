@@ -326,13 +326,16 @@ const MyStyledComponent = styled.div\`
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;
   padding: 20px;
+}
+
+  #different-wrapper #different-wrapper & {
+    border: 1px solid black;
+  }
+
+  #different-wrapper & {
 
   \${props => props.isDark ? 'color: red' : 'color: white'};
 }
-
-  #different-wrapper & {
-    border: 1px solid black;
-  }
 \`;
 export default MyStyledComponent;
 "
@@ -402,7 +405,7 @@ const MyStyledComponent = styled.div\`
   padding: 20px;
 }
 
-  #different-wrapper &:hover {
+  #different-wrapper #different-wrapper &:hover {
     \${props => props.isDark ? 'color: red' : 'color: white'};
   }
 \`;
@@ -544,18 +547,21 @@ export default styled.div\`
   width: 100%;
 
   \${props => props.styles};
-
-  \${props => props.moreStyles};
 }
 
-  .class-wrapper .other-wrapper &:hover {
+  .class-wrapper .other-wrapper .class-wrapper .other-wrapper &:hover {
     border-color: \${props => props.hoverBorder};
   }
 
-  .class-wrapper .other-wrapper &:active {
+  .class-wrapper .other-wrapper .class-wrapper .other-wrapper &:active {
     border-color: \${props => props.activeBorder};
     \${props.activeStyles};
   }
+
+  .class-wrapper .other-wrapper & {
+
+  \${props => props.moreStyles};
+}
 \`;
 "
 `;
@@ -577,7 +583,7 @@ const styled = {
 
 };
 export default styled.input\`
-#different-wrapper && {
+#different-wrapper #different-wrapper &#different-wrapper & {
     border: \${props => props.borderWidth} solid \${props => props.borderColor};
   }
 \`;
@@ -608,10 +614,10 @@ export default styled.div\`
 #different-wrapper & {
   position: relative;
 }
-  #different-wrapper & \${Child} {
+  #different-wrapper & #different-wrapper \${Child} {
     \${props => props.childStyles};
   }
-  #different-wrapper \${Child} + &, #different-wrapper & + \${Child} {
+  #different-wrapper \${Child} + #different-wrapper &, #different-wrapper #different-wrapper & + \${Child} {
     margin-right: \${props => props.spaceBetween};
   }
 \`;
@@ -649,7 +655,7 @@ body .specific .rule & {
   padding: 20px;
 }
 
-  body .specific .rule & {
+  body .specific .rule body .specific .rule & {
     border: 1px solid black;
   }
 \`;
@@ -688,7 +694,7 @@ const MyStyledComponent = styled.div\`
   padding: 20px;
 }
 
-  .moreSpecific & {
+  .moreSpecific .moreSpecific & {
     border: 1px solid black;
   }
 \`;
@@ -727,7 +733,7 @@ const MyStyledComponent = styled.div\`
   padding: 20px;
 }
 
-  .specific .verySpecific .extraSpecific & {
+  .specific .verySpecific .extraSpecific .specific .verySpecific .extraSpecific & {
     border: 1px solid black;
   }
 \`;
